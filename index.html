@@ -3,755 +3,797 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EastJava — The Living Heritage</title>
-<meta name="description" content="Jelajahi kekayaan budaya Jawa Timur melalui EastJava.">
+<title>EastJava — The Living Heritage of East Java</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
-
 :root {
-  --green:#183f35;
-  --green2:#285648;
-  --cream:#f4ebdd;
-  --paper:#fffaf2;
-  --gold:#d5b887;
-  --terra:#b96f4a;
-  --ink:#292e29;
-  --muted:#77776c;
-  --line:#e5dccc;
+  --green: #183F35;
+  --ivory: #F4EBDD;
+  --terracotta: #B96F4A;
+  --gold: #D5B887;
+  --ink: #292E29;
+  --white: #fffdf8;
 }
-
-* {box-sizing:border-box;margin:0;padding:0}
-html {scroll-behavior:smooth}
+* { box-sizing: border-box; scroll-behavior: smooth; }
 body {
-  background:var(--cream);
-  color:var(--ink);
-  font-family:'DM Sans',sans-serif;
+  margin: 0;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
 }
-button,input,select,textarea {font:inherit}
-button {cursor:pointer}
-a {color:inherit;text-decoration:none}
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
 header {
-  background:var(--cream);
-  border-bottom:1px solid var(--line);
-  padding:17px 6%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  position:sticky;
-  top:0;
-  z-index:10;
+  background: var(--green);
+  color: var(--ivory);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 3px 15px #0002;
+}
+.navbar {
+  max-width: 1200px;
+  margin: auto;
+  padding: 16px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 .logo {
-  font-family:'Playfair Display',serif;
-  font-size:28px;
-  font-weight:bold;
-  letter-spacing:1px;
-  color:var(--green);
+  font-family: 'Playfair Display', serif;
+  font-size: 27px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
-nav {display:flex;gap:19px;flex-wrap:wrap}
-nav button {
-  border:0;
-  background:none;
-  color:var(--green);
-  font-size:12px;
-  font-weight:600;
+.logo span { color: var(--gold); }
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
 }
-nav button:hover {color:var(--terra)}
-.menu-btn {display:none}
-main {min-height:70vh}
-.page {display:none}
-.page.active {display:block}
+nav a {
+  font-size: 12px;
+  color: #f4ebdd;
+  opacity: .9;
+  transition: .2s;
+}
+nav a:hover { color: var(--gold); }
+.menu-btn {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--ivory);
+  padding: 7px 11px;
+  border-radius: 6px;
+}
 .hero {
-  background:var(--green);
-  color:var(--cream);
-  padding:90px 7%;
-  display:grid;
-  grid-template-columns:1.1fr .9fr;
-  align-items:center;
-  gap:45px;
+  min-height: 570px;
+  padding: 90px 8%;
+  background:
+    linear-gradient(90deg, #102e28ee, #183f35a8),
+    url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1800&q=85') center/cover;
+  color: var(--ivory);
+  display: flex;
+  align-items: center;
 }
+.hero-content { max-width: 720px; }
 .eyebrow {
-  color:var(--terra);
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:3px;
-  margin-bottom:18px;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 11px;
+  font-weight: 700;
 }
-.hero .eyebrow {color:var(--gold)}
-h1,h2,h3,.serif {font-family:'Playfair Display',serif}
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+}
 .hero h1 {
-  font-size:clamp(42px,6vw,76px);
-  line-height:1.1;
-  font-weight:500;
-  margin-bottom:22px;
+  font-size: clamp(42px, 7vw, 76px);
+  line-height: 1.08;
+  margin: 20px 0;
 }
 .hero p {
-  color:#e1dfd4;
-  line-height:1.9;
-  max-width:520px;
-}
-.hero-image {
-  width:100%;
-  height:390px;
-  object-fit:cover;
-  border-radius:3px;
+  line-height: 1.8;
+  max-width: 550px;
+  color: #eee5d8;
 }
 .btn {
-  display:inline-block;
-  background:var(--terra);
-  color:white;
-  border:0;
-  padding:13px 20px;
-  margin-top:22px;
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:1px;
-  border-radius:2px;
+  display: inline-block;
+  border: 0;
+  padding: 13px 22px;
+  border-radius: 4px;
+  background: var(--terracotta);
+  color: white;
+  font-weight: 700;
+  margin: 8px 8px 0 0;
+  transition: .2s;
 }
-.btn:hover {opacity:.85}
-.btn-green {background:var(--green)}
-.btn-light {background:var(--cream);color:var(--green)}
-.section {padding:65px 7%}
-.section-head {margin-bottom:30px}
-.section-head h2 {font-size:38px;color:var(--green);margin-bottom:10px}
-.section-head p {color:var(--muted);line-height:1.7}
-.stats {
-  display:flex;
-  gap:35px;
-  flex-wrap:wrap;
-  padding:28px 7%;
-  background:#e9dfcf;
+.btn:hover { transform: translateY(-2px); filter: brightness(1.08); }
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--ivory);
 }
-.stat strong {display:block;font:25px 'Playfair Display';color:var(--green)}
-.stat span {font-size:11px;color:var(--muted)}
+section { padding: 75px 7%; }
+.section-head {
+  max-width: 700px;
+  margin-bottom: 35px;
+}
+.section-head h2 {
+  color: var(--green);
+  font-size: clamp(30px, 4vw, 43px);
+  margin: 10px 0;
+}
+.section-head p { color: #68675e; line-height: 1.8; }
 .grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:17px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
 }
 .card {
-  background:var(--paper);
-  border:1px solid var(--line);
-  padding:23px;
-  border-radius:3px;
-  transition:.2s;
+  background: var(--white);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #e7ddcc;
+  transition: .25s;
 }
-.card:hover {transform:translateY(-4px);border-color:var(--gold)}
-.card .number {font-size:11px;color:var(--terra);letter-spacing:2px}
-.card h3 {font-size:24px;color:var(--green);margin:13px 0}
-.card p {font-size:13px;line-height:1.8;color:var(--muted)}
-.card button {margin-top:16px}
-.feature {
-  background:#e8decd;
-  padding:35px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:30px;
-  align-items:center;
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px #183f3518;
 }
-.feature img {width:100%;height:260px;object-fit:cover}
-.feature h2 {font-size:34px;color:var(--green);margin:12px 0}
-.feature p {line-height:1.8;color:var(--muted)}
-.page-intro {background:var(--green);color:var(--cream);padding:55px 7%}
-.page-intro h1 {font-size:48px;margin-bottom:12px}
-.page-intro p {max-width:650px;line-height:1.8;color:#e4dfd4}
-.content {padding:45px 7%}
-.search {
-  width:100%;
-  padding:14px;
-  border:1px solid var(--line);
-  background:var(--paper);
-  margin-bottom:25px;
-  outline-color:var(--green);
+.card-body { padding: 22px; }
+.card h3 { color: var(--green); margin: 8px 0; font-size: 22px; }
+.card p { color: #68675e; line-height: 1.7; font-size: 14px; }
+.card-tag {
+  color: var(--terracotta);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 }
-.field {
-  width:100%;
-  padding:13px;
-  background:var(--paper);
-  border:1px solid var(--line);
-  margin:8px 0 16px;
-  border-radius:2px;
+.card button {
+  background: var(--green);
+  color: white;
+  border: 0;
+  border-radius: 4px;
+  padding: 10px 14px;
+  margin-top: 10px;
 }
-label {font-size:12px;font-weight:700;color:var(--green)}
-.map-grid {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
+.region-section { background: var(--green); color: var(--ivory); }
+.region-section .section-head h2 { color: var(--ivory); }
+.region-section .section-head p { color: #d8d5c9; }
+.region-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
 }
-.map-place {
-  padding:18px 10px;
-  background:var(--paper);
-  border:1px solid var(--line);
-  color:var(--green);
-  font-weight:600;
-  font-size:12px;
+.region-btn {
+  background: #ffffff12;
+  border: 1px solid #d5b88766;
+  color: var(--ivory);
+  padding: 15px 10px;
+  border-radius: 5px;
+  transition: .2s;
 }
-.map-place:hover,.map-place.selected {
-  background:var(--green);
-  color:white;
+.region-btn:hover, .region-btn.active {
+  background: var(--gold);
+  color: var(--green);
 }
-.result {
-  margin-top:20px;
-  padding:22px;
-  background:#e8decd;
-  line-height:1.8;
+.region-info {
+  margin-top: 25px;
+  padding: 25px;
+  background: #ffffff12;
+  border-left: 4px solid var(--gold);
+  border-radius: 5px;
+  line-height: 1.7;
 }
-.question {
-  padding:23px;
-  background:var(--paper);
-  border:1px solid var(--line);
-  margin:15px 0;
+.feature-card {
+  padding: 28px;
+  background: var(--white);
+  border: 1px solid #e7ddcc;
+  border-radius: 8px;
 }
-.option {
-  display:block;
-  width:100%;
-  text-align:left;
-  padding:13px;
-  margin-top:9px;
-  border:1px solid var(--line);
-  background:white;
-  color:var(--ink);
+.feature-icon { font-size: 30px; }
+.feature-card h3 { color: var(--green); }
+.feature-card p { line-height: 1.7; color: #68675e; }
+.feature-card a {
+  display: inline-block;
+  color: var(--terracotta);
+  font-weight: 700;
+  margin-top: 8px;
 }
-.option:hover {border-color:var(--green)}
-.option.correct {background:#dcebdc;border-color:#4d895b}
-.option.wrong {background:#f4dcd5;border-color:var(--terra)}
-.notice {
-  padding:17px;
-  background:#e8decd;
-  margin:15px 0;
-  line-height:1.7;
-}
-.compare {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
-}
-.compare .card {min-height:180px}
 .day-card {
-  background:var(--green);
-  color:var(--cream);
-  padding:35px;
+  background: var(--green);
+  color: var(--ivory);
+  padding: 35px;
+  border-radius: 10px;
 }
-.day-card h2 {font-size:35px;margin:10px 0}
-.day-card p {line-height:1.8;color:#e3e0d4}
-.item-row {
-  padding:17px;
-  background:var(--paper);
-  border-bottom:1px solid var(--line);
-  display:flex;
-  justify-content:space-between;
-  gap:12px;
-  align-items:center;
+.day-card h2 { font-size: 35px; color: var(--gold); }
+.day-card p { line-height: 1.8; }
+.day-card button {
+  background: var(--gold);
+  color: var(--green);
+  border: 0;
+  padding: 12px 18px;
+  border-radius: 4px;
+  font-weight: 700;
 }
-.small {font-size:12px;color:var(--muted)}
+.form-box {
+  background: var(--white);
+  border: 1px solid #e7ddcc;
+  padding: 25px;
+  border-radius: 8px;
+}
+.form-box input, .form-box select, .form-box textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 15px;
+  border: 1px solid #d8cdbb;
+  border-radius: 4px;
+  background: #fffdf8;
+}
+.form-box textarea { min-height: 110px; resize: vertical; }
+.form-box label { font-size: 13px; font-weight: 700; color: var(--green); }
+.collection-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-bottom: 1px solid #e7ddcc;
+}
+.collection-item button {
+  border: 0;
+  background: #f1ded3;
+  color: #9b4e31;
+  padding: 8px 10px;
+  border-radius: 4px;
+}
+.compare-box {
+  background: var(--white);
+  padding: 25px;
+  border: 1px solid #e7ddcc;
+  border-radius: 8px;
+}
+.compare-box select {
+  padding: 12px;
+  width: 100%;
+  margin: 10px 0;
+  border: 1px solid #d8cdbb;
+  border-radius: 4px;
+}
+.compare-result {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 20px;
+}
+.compare-result div {
+  background: var(--ivory);
+  padding: 18px;
+  border-radius: 5px;
+  line-height: 1.7;
+}
+.event {
+  border-left: 3px solid var(--terracotta);
+  padding: 12px 18px;
+  background: var(--white);
+  margin: 12px 0;
+  border-radius: 0 5px 5px 0;
+}
 footer {
-  background:var(--green);
-  color:var(--cream);
-  text-align:center;
-  padding:38px 7%;
-  line-height:2;
+  background: #102e28;
+  color: var(--ivory);
+  padding: 40px 7%;
+  text-align: center;
 }
-footer strong {font:27px 'Playfair Display'}
-.hidden {display:none!important}
-@media(max-width:800px) {
-  header {align-items:flex-start;flex-wrap:wrap}
-  nav {gap:12px}
-  .hero,.feature {grid-template-columns:1fr}
-  .hero {padding:55px 7%}
-  .hero-image {height:270px}
-  .grid {grid-template-columns:repeat(2,1fr)}
-  .map-grid {grid-template-columns:repeat(2,1fr)}
+footer p { color: #d5cfc2; font-size: 13px; line-height: 1.7; }
+footer strong { color: var(--gold); }
+.small-note { color: #777; font-size: 12px; line-height: 1.6; }
+@media(max-width: 850px) {
+  .menu-btn { display: block; }
+  nav {
+    display: none;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    width: 100%;
+    background: var(--green);
+    padding: 20px 6%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  nav.open { display: flex; }
+  .navbar { flex-wrap: wrap; }
 }
-@media(max-width:500px) {
-  .grid {grid-template-columns:1fr}
-  .compare {grid-template-columns:1fr}
-  nav {width:100%;gap:13px}
-  nav button {font-size:11px}
-  .section-head h2 {font-size:31px}
-  .page-intro h1 {font-size:38px}
+@media(max-width: 550px) {
+  section { padding: 55px 6%; }
+  .hero { min-height: 520px; padding: 70px 7%; }
+  .compare-result { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 
 <body>
+
 <header>
-  <a class="logo" href="#" onclick="showPage('home')">EastJava.</a>
-  <nav>
-    <button onclick="showPage('home')">Home</button>
-    <button onclick="showPage('explore')">Explore</button>
-    <button onclick="showPage('quiz')">Quiz</button>
-    <button onclick="showPage('comparison')">Comparison</button>
-    <button onclick="showPage('stories')">Stories</button>
-    <button onclick="showPage('calendar')">Calendar</button>
-    <button onclick="showPage('collection')">My Collection <span id="count">0</span></button>
-  </nav>
+  <div class="navbar">
+    <a class="logo" href="index.html">East<span>Java.</span></a>
+    <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
+    <nav id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="explore.html">Explore</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="#comparison">Compare</a>
+      <a href="#collection">My Collection</a>
+      <a href="#culture-day">Culture Day</a>
+      <a href="#stories">Stories</a>
+      <a href="#calendar">Calendar</a>
+    </nav>
+  </div>
 </header>
 
 <main>
-<!-- HOME -->
-<section class="page active" id="home">
-  <div class="hero">
-    <div>
-      <div class="eyebrow">THE LIVING HERITAGE OF EAST JAVA</div>
-      <h1>Every place has a story. <i>Every culture has a soul.</i></h1>
-      <p>Jelajahi keberagaman budaya Jawa Timur—dari bahasa dan kesenian hingga tradisi yang diwariskan lintas generasi.</p>
-      <button class="btn" onclick="showPage('explore')">MULAI MENJELAJAH ↗</button>
-      <button class="btn btn-light" onclick="showPage('cultureday')">BUDAYA HARI INI →</button>
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="eyebrow">Explore · Discover · Preserve</div>
+    <h1>The Living Heritage of East Java</h1>
+    <p>
+      Jelajahi kekayaan budaya Jawa Timur. Temukan tradisi,
+      kesenian, bahasa, pakaian adat, dan cerita dari berbagai
+      daerah dalam satu perjalanan digital.
+    </p>
+    <a class="btn" href="explore.html">Explore Culture</a>
+    <a class="btn btn-outline" href="quiz.html">Start Quiz</a>
+  </div>
+</section>
+
+<section id="categories">
+  <div class="section-head">
+    <div class="eyebrow">Discover the heritage</div>
+    <h2>Explore Cultural Categories</h2>
+    <p>Kenali berbagai unsur kebudayaan yang membentuk identitas masyarakat Jawa Timur.</p>
+  </div>
+  <div class="grid">
+    <div class="card"><div class="card-body"><div class="card-tag">01 · Identity</div><h3>Suku</h3><p>Mengenal kelompok masyarakat dan keberagaman budaya di Jawa Timur.</p></div></div>
+    <div class="card"><div class="card-body"><div class="card-tag">02 · Language</div><h3>Bahasa</h3><p>Menelusuri bahasa dan ragam dialek yang digunakan masyarakat.</p></div></div>
+    <div class="card"><div class="card-body"><div class="card-tag">03 · Performance</div><h3>Kesenian dan Pertunjukan</h3><p>Mengenal seni tari, musik, teater, dan pertunjukan tradisional.</p></div></div>
+    <div class="card"><div class="card-body"><div class="card-tag">04 · Tradition</div><h3>Tradisi dan Upacara Adat</h3><p>Memahami tradisi dan upacara yang diwariskan antargenerasi.</p></div></div>
+    <div class="card"><div class="card-body"><div class="card-tag">05 · Architecture</div><h3>Rumah Adat</h3><p>Mengenal bentuk rumah tradisional dan nilai di balik arsitekturnya.</p></div></div>
+    <div class="card"><div class="card-body"><div class="card-tag">06 · Clothing</div><h3>Pakaian Adat</h3><p>Menjelajahi busana tradisional dari berbagai daerah.</p></div></div>
+    <div class="card"><div class="card-body"><div class="card-tag">07 · Heritage</div><h3>Senjata Tradisional</h3><p>Mengenal benda bersejarah dan nilai budaya yang menyertainya.</p></div></div>
+  </div>
+  <p style="margin-top:25px"><a class="btn" href="explore.html">Jelajahi Semua Kategori</a></p>
+</section>
+
+<section class="region-section" id="map">
+  <div class="section-head">
+    <div class="eyebrow">Explore the region</div>
+    <h2>Peta Interaktif Jawa Timur</h2>
+    <p>Pilih daerah untuk mengenal sekilas kekayaan budaya di wilayah tersebut.</p>
+  </div>
+  <div class="region-grid" id="regionGrid"></div>
+  <div class="region-info" id="regionInfo">
+    <strong>Selamat datang di Jawa Timur!</strong>
+    <p>Pilih salah satu daerah di atas untuk melihat informasi singkatnya.</p>
+  </div>
+  <p class="small-note" style="color:#d8d5c9">Catatan: tampilan ini merupakan penjelajah daerah interaktif, bukan peta geografis berskala.</p>
+</section>
+
+<section id="features">
+  <div class="section-head">
+    <div class="eyebrow">Your cultural journey</div>
+    <h2>Discover More Features</h2>
+    <p>Fitur yang membantu kamu belajar, membandingkan, dan menyimpan pengetahuan budaya.</p>
+  </div>
+  <div class="grid">
+    <div class="feature-card">
+      <div class="feature-icon">🧠</div>
+      <h3>Kuis Bertingkat</h3>
+      <p>Uji pengetahuan budaya melalui level Easy, Medium, dan Hard.</p>
+      <a href="quiz.html">Mulai Kuis →</a>
     </div>
-    <img class="hero-image" src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1000" alt="Pemandangan alam">
-  </div>
-
-  <div class="stats">
-    <div class="stat"><strong>38</strong><span>Kabupaten dan kota</span></div>
-    <div class="stat"><strong>1</strong><span>Provinsi</span></div>
-    <div class="stat"><strong>∞</strong><span>Cerita budaya</span></div>
-  </div>
-
-  <div class="section">
-    <div class="section-head">
-      <div class="eyebrow">EXPLORE THE HERITAGE</div>
-      <h2>Kenali warisan. Hargai perbedaan.</h2>
-      <p>Jelajahi berbagai kategori kebudayaan Jawa Timur.</p>
+    <div class="feature-card">
+      <div class="feature-icon">⚖️</div>
+      <h3>Culture Comparison</h3>
+      <p>Bandingkan dua budaya untuk menemukan persamaan dan perbedaannya.</p>
+      <a href="#comparison">Bandingkan →</a>
     </div>
-    <div class="grid" id="homeCategories"></div>
+    <div class="feature-card">
+      <div class="feature-icon">♡</div>
+      <h3>My Collection</h3>
+      <p>Simpan budaya favorit agar mudah ditemukan kembali.</p>
+      <a href="#collection">Lihat Koleksi →</a>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">☀</div>
+      <h3>Culture of the Day</h3>
+      <p>Temukan satu budaya pilihan untuk dipelajari setiap hari.</p>
+      <a href="#culture-day">Temukan Hari Ini →</a>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">✍</div>
+      <h3>Cerita dari Daerah</h3>
+      <p>Bagikan cerita, pengalaman, atau pengetahuan budaya daerah.</p>
+      <a href="#stories">Bagikan Cerita →</a>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📅</div>
+      <h3>Culture Calendar</h3>
+      <p>Lihat contoh agenda budaya dan perayaan tradisional.</p>
+      <a href="#calendar">Lihat Kalender →</a>
+    </div>
   </div>
+</section>
 
-  <div class="section">
-    <div class="feature">
-      <div>
-        <div class="eyebrow">CULTURE OF THE DAY</div>
-        <h2 id="homeDayTitle">Reog Ponorogo</h2>
-        <p id="homeDayText">Salah satu kesenian pertunjukan terkenal dari Jawa Timur.</p>
-        <button class="btn btn-green" onclick="showPage('cultureday')">JELAJAHI CERITA →</button>
+<section id="culture-day">
+  <div class="section-head">
+    <div class="eyebrow">A little discovery every day</div>
+    <h2>Culture of the Day</h2>
+    <p>Kenali budaya Jawa Timur melalui pilihan budaya harian.</p>
+  </div>
+  <div class="day-card">
+    <div class="eyebrow">Today's cultural spotlight</div>
+    <h2 id="dayTitle">Reog Ponorogo</h2>
+    <p id="dayDescription">
+      Reog Ponorogo merupakan seni pertunjukan tradisional dari Ponorogo,
+      Jawa Timur, yang dikenal dengan Dadak Merak dan unsur tari serta musik.
+    </p>
+    <button onclick="nextCulture()">Temukan Budaya Lain ↗</button>
+  </div>
+</section>
+
+<section id="comparison">
+  <div class="section-head">
+    <div class="eyebrow">See the differences</div>
+    <h2>Culture Comparison</h2>
+    <p>Pilih dua budaya untuk melihat informasi dan membandingkannya.</p>
+  </div>
+  <div class="compare-box">
+    <label for="cultureOne">Budaya pertama</label>
+    <select id="cultureOne">
+      <option value="reog">Reog Ponorogo</option>
+      <option value="karapan">Karapan Sapi</option>
+      <option value="ludruk">Ludruk</option>
+      <option value="remo">Tari Remo</option>
+      <option value="yadnya">Yadnya Kasada</option>
+    </select>
+    <label for="cultureTwo">Budaya kedua</label>
+    <select id="cultureTwo">
+      <option value="karapan">Karapan Sapi</option>
+      <option value="reog">Reog Ponorogo</option>
+      <option value="ludruk">Ludruk</option>
+      <option value="remo">Tari Remo</option>
+      <option value="yadnya">Yadnya Kasada</option>
+    </select>
+    <button class="btn" onclick="compareCulture()">Bandingkan Sekarang</button>
+    <div class="compare-result" id="compareResult">
+      <div>Pilih dua budaya, lalu tekan tombol bandingkan.</div>
+      <div>Hasil perbandingan akan tampil di sini.</div>
+    </div>
+  </div>
+</section>
+
+<section id="collection">
+  <div class="section-head">
+    <div class="eyebrow">Keep what inspires you</div>
+    <h2>My Collection</h2>
+    <p>Simpan budaya favoritmu dan kumpulkan pengetahuan budaya dalam satu tempat.</p>
+  </div>
+  <div class="grid" id="cultureCards"></div>
+  <div class="form-box" style="margin-top:25px">
+    <h3>Budaya Favorit Saya</h3>
+    <div id="savedList"></div>
+    <p class="small-note">Koleksi disimpan di browser/perangkat yang kamu gunakan.</p>
+  </div>
+</section>
+
+<section id="stories">
+  <div class="section-head">
+    <div class="eyebrow">Stories from the region</div>
+    <h2>Cerita dari Daerah</h2>
+    <p>Bagikan cerita, pengalaman, atau informasi budaya yang ingin kamu kenalkan kepada orang lain.</p>
+  </div>
+  <div class="grid">
+    <div class="form-box">
+      <form id="storyForm">
+        <label for="storyName">Nama penulis</label>
+        <input id="storyName" type="text" placeholder="Masukkan nama" required>
+        <label for="storyRegion">Asal daerah</label>
+        <input id="storyRegion" type="text" placeholder="Contoh: Blitar" required>
+        <label for="storyTitle">Judul cerita</label>
+        <input id="storyTitle" type="text" placeholder="Judul cerita budaya" required>
+        <label for="storyText">Isi cerita</label>
+        <textarea id="storyText" placeholder="Tuliskan cerita atau pengetahuan budaya..." required></textarea>
+        <button class="btn" type="submit">Simpan Cerita</button>
+      </form>
+      <p class="small-note">Cerita tersimpan secara lokal di browser ini, belum dipublikasikan ke pengguna lain.</p>
+    </div>
+    <div class="form-box">
+      <h3>Community Stories</h3>
+      <div id="storyList">
+        <p>Belum ada cerita yang dibagikan. Jadilah yang pertama!</p>
       </div>
-      <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=900" alt="Pertunjukan budaya">
     </div>
   </div>
 </section>
 
-<!-- EXPLORE -->
-<section class="page" id="explore">
-  <div class="page-intro">
-    <div class="eyebrow">01 / DISCOVER</div>
-    <h1>Explore East Java</h1>
-    <p>Pilih wilayah untuk mengenal cerita dan kekayaan budaya dari berbagai daerah di Jawa Timur.</p>
+<section id="calendar">
+  <div class="section-head">
+    <div class="eyebrow">Mark your calendar</div>
+    <h2>Culture Calendar</h2>
+    <p>Contoh agenda dan tradisi budaya yang dapat kamu pelajari lebih lanjut.</p>
   </div>
-  <div class="content">
-    <div class="section-head">
-      <h2>Peta Wilayah</h2>
-      <p>Pilih salah satu nama daerah di bawah ini untuk melihat informasi awalnya.</p>
-    </div>
-    <div class="map-grid" id="mapGrid"></div>
-    <div class="result" id="mapResult">Pilih daerah untuk menampilkan informasi.</div>
+  <div class="event">
+    <div class="card-tag">Ponorogo · Agenda budaya</div>
+    <h3>Festival Reog Ponorogo</h3>
+    <p>Agenda pertunjukan dan pelestarian seni Reog Ponorogo. Jadwal penyelenggaraan perlu diperiksa melalui sumber resmi.</p>
   </div>
-  <div class="content">
-    <div class="section-head"><h2>Kategori Budaya</h2><p>Temukan berbagai bentuk warisan budaya.</p></div>
-    <div class="grid" id="exploreCategories"></div>
+  <div class="event">
+    <div class="card-tag">Madura · Tradisi</div>
+    <h3>Karapan Sapi</h3>
+    <p>Tradisi perlombaan sapi yang dikenal luas sebagai bagian dari budaya masyarakat Madura. Jadwal acara dapat berbeda setiap tahun.</p>
   </div>
+  <div class="event">
+    <div class="card-tag">Bromo · Tradisi</div>
+    <h3>Yadnya Kasada</h3>
+    <p>Upacara adat masyarakat Tengger yang berkaitan dengan tradisi dan kehidupan spiritual mereka.</p>
+  </div>
+  <p class="small-note">Agenda di atas adalah informasi pengenalan, bukan jadwal acara terverifikasi. Periksa pengumuman penyelenggara atau pemerintah daerah sebelum berkunjung.</p>
 </section>
 
-<!-- CATEGORY DETAIL -->
-<section class="page" id="category">
-  <div class="page-intro">
-    <div class="eyebrow">EAST JAVA CULTURAL ARCHIVE</div>
-    <h1 id="categoryTitle">Kategori</h1>
-    <p id="categoryDescription"></p>
-  </div>
-  <div class="content">
-    <input class="search" id="categorySearch" placeholder="Cari informasi budaya..." oninput="renderCategory(this.value)">
-    <div class="grid" id="categoryItems"></div>
-  </div>
-</section>
-
-<!-- QUIZ -->
-<section class="page" id="quiz">
-  <div class="page-intro">
-    <div class="eyebrow">02 / TEST YOUR KNOWLEDGE</div>
-    <h1>Culture Challenge</h1>
-    <p>Uji pengetahuanmu tentang budaya Jawa Timur melalui tiga tingkat tantangan.</p>
-  </div>
-  <div class="content">
-    <div id="quizStart">
-      <div class="grid">
-        <div class="card"><span class="number">LEVEL 01</span><h3>Easy</h3><p>Pertanyaan dasar tentang budaya Jawa Timur.</p><button class="btn btn-green" onclick="startQuiz('easy')">Mulai</button></div>
-        <div class="card"><span class="number">LEVEL 02</span><h3>Medium</h3><p>Tantangan pengetahuan tingkat menengah.</p><button class="btn btn-green" onclick="startQuiz('medium')">Mulai</button></div>
-        <div class="card"><span class="number">LEVEL 03</span><h3>Hard</h3><p>Uji pengetahuan budaya lebih mendalam.</p><button class="btn btn-green" onclick="startQuiz('hard')">Mulai</button></div>
-      </div>
-    </div>
-    <div id="quizArea" class="hidden">
-      <p id="quizProgress" class="eyebrow"></p>
-      <h2 id="quizQuestion" class="serif"></h2>
-      <div id="quizOptions"></div>
-      <div id="quizFeedback" class="notice hidden"></div>
-      <button id="nextQuestion" class="btn btn-green hidden" onclick="nextQuiz()">Selanjutnya →</button>
-    </div>
-    <div id="quizResult" class="notice hidden"></div>
-  </div>
-</section>
-
-<!-- COMPARISON -->
-<section class="page" id="comparison">
-  <div class="page-intro">
-    <div class="eyebrow">03 / SEE THE DIFFERENCES</div>
-    <h1>Culture Comparison</h1>
-    <p>Bandingkan dua budaya dan temukan persamaan serta perbedaannya.</p>
-  </div>
-  <div class="content">
-    <div class="compare">
-      <div><label>Pilih budaya pertama</label><select class="field" id="compareA"></select></div>
-      <div><label>Pilih budaya kedua</label><select class="field" id="compareB"></select></div>
-    </div>
-    <button class="btn btn-green" onclick="compareCulture()">BANDINGKAN BUDAYA</button>
-    <div id="compareResult" class="compare" style="margin-top:25px"></div>
-  </div>
-</section>
-
-<!-- COLLECTION -->
-<section class="page" id="collection">
-  <div class="page-intro">
-    <div class="eyebrow">04 / YOUR PERSONAL ARCHIVE</div>
-    <h1>My Collection</h1>
-    <p>Simpan dan kumpulkan informasi budaya favoritmu.</p>
-  </div>
-  <div class="content">
-    <div id="collectionItems"></div>
-  </div>
-</section>
-
-<!-- CULTURE DAY -->
-<section class="page" id="cultureday">
-  <div class="page-intro">
-    <div class="eyebrow">05 / DAILY DISCOVERY</div>
-    <h1>Culture of the Day</h1>
-    <p>Kenali satu cerita budaya Jawa Timur pilihan setiap hari.</p>
-  </div>
-  <div class="content">
-    <div class="day-card">
-      <div class="eyebrow">TODAY'S CULTURE</div>
-      <h2 id="dayTitle"></h2>
-      <p id="dayDescription"></p>
-      <p id="dayOrigin" style="margin-top:15px"></p>
-      <button class="btn btn-light" id="daySave" onclick="saveDay()">SIMPAN KE KOLEKSI ♡</button>
-    </div>
-  </div>
-</section>
-
-<!-- STORIES -->
-<section class="page" id="stories">
-  <div class="page-intro">
-    <div class="eyebrow">06 / COMMUNITY VOICES</div>
-    <h1>Cerita dari Daerah</h1>
-    <p>Setiap daerah memiliki cerita. Bagikan pengalaman dan pengetahuan budayamu.</p>
-  </div>
-  <div class="content">
-    <div class="card">
-      <h2>Kirim Ceritamu</h2>
-      <p class="small">Cerita yang dikirim akan berstatus menunggu peninjauan. Versi ini menyimpan cerita pada browser yang digunakan.</p>
-      <label>Nama penulis</label>
-      <input class="field" id="storyName" placeholder="Nama kamu">
-      <label>Asal daerah</label>
-      <input class="field" id="storyPlace" placeholder="Contoh: Blitar">
-      <label>Judul cerita</label>
-      <input class="field" id="storyTitle" placeholder="Judul cerita">
-      <label>Isi cerita</label>
-      <textarea class="field" id="storyText" rows="5" placeholder="Ceritakan budaya dari daerahmu..."></textarea>
-      <button class="btn btn-green" onclick="submitStory()">KIRIM CERITA</button>
-      <div id="storyMessage"></div>
-    </div>
-    <div class="section-head" style="margin-top:35px"><h2>Cerita tersimpan di perangkat ini</h2></div>
-    <div id="storyList"></div>
-  </div>
-</section>
-
-<!-- CALENDAR -->
-<section class="page" id="calendar">
-  <div class="page-intro">
-    <div class="eyebrow">07 / CULTURAL EVENTS</div>
-    <h1>Culture Calendar</h1>
-    <p>Jelajahi agenda dan contoh kegiatan budaya di Jawa Timur.</p>
-  </div>
-  <div class="content">
-    <label>Pilih bulan</label>
-    <input class="field" type="month" id="calendarMonth">
-    <div id="calendarList"></div>
-    <p class="small" style="margin-top:20px">Catatan: agenda yang ditampilkan merupakan contoh informasi, bukan jadwal resmi. Periksa penyelenggara sebelum berkunjung.</p>
-  </div>
-</section>
 </main>
 
 <footer>
-  <strong>EastJava.</strong>
-  <p>The Living Heritage of East Java</p>
+  <div class="logo">East<span>Java.</span></div>
+  <p><strong>The Living Heritage of East Java</strong></p>
   <p>Explore · Discover · Preserve</p>
-  <p>© 2026 EastJava. A Digital Culture Platform.</p>
+  <p>Platform edukasi digital untuk mengenal dan melestarikan kekayaan budaya Jawa Timur.</p>
+  <p>© 2026 EastJava. Created with appreciation for local heritage.</p>
 </footer>
 
 <script>
-const categories = [
- {id:'suku',name:'Suku',desc:'Mengenal keberagaman kelompok masyarakat dan identitas budaya di Jawa Timur.',items:[
-  ['Suku Jawa','Kelompok masyarakat dengan tradisi, bahasa, dan kebudayaan yang beragam di Jawa Timur.','Berbagai wilayah Jawa Timur'],
-  ['Suku Madura','Masyarakat dengan kekayaan bahasa, tradisi, kesenian, dan kehidupan pesisir.','Pulau Madura dan wilayah lainnya'],
-  ['Suku Osing','Kelompok masyarakat dengan budaya dan bahasa khas yang berkembang di Banyuwangi.','Banyuwangi'],
-  ['Tengger','Masyarakat yang memiliki tradisi budaya khas di kawasan pegunungan Tengger.','Kawasan Bromo Tengger']
- ]},
- {id:'bahasa',name:'Bahasa',desc:'Mengenal bahasa daerah dan ragam tutur di Jawa Timur.',items:[
-  ['Bahasa Jawa','Memiliki ragam tutur dan variasi dialek di berbagai wilayah.','Berbagai wilayah'],
-  ['Bahasa Madura','Bahasa daerah yang digunakan masyarakat Madura dan berbagai komunitas perantauan.','Madura'],
-  ['Bahasa Osing','Bahasa yang menjadi salah satu penanda identitas masyarakat Osing.','Banyuwangi'],
-  ['Bahasa Tengger','Ragam bahasa yang digunakan sebagian masyarakat Tengger.','Kawasan Tengger']
- ]},
- {id:'kesenian',name:'Kesenian dan Pertunjukan',desc:'Mengenal seni pertunjukan, musik, tari, dan ekspresi kreatif masyarakat.',items:[
-  ['Reog Ponorogo','Kesenian pertunjukan yang dikenal dengan dadak merak dan tokoh-tokoh khas.','Ponorogo'],
-  ['Tari Remo','Tarian tradisional yang dikenal sebagai salah satu bentuk penyambutan tamu.','Jawa Timur'],
-  ['Ludruk','Seni pertunjukan drama tradisional yang berkembang di Jawa Timur.','Jawa Timur'],
-  ['Jaranan','Kesenian pertunjukan yang menggunakan properti kuda tiruan.','Berbagai wilayah']
- ]},
- {id:'tradisi',name:'Tradisi dan Upacara Adat',desc:'Menelusuri tradisi dan praktik budaya yang diwariskan antargenerasi.',items:[
-  ['Kasada','Upacara masyarakat Tengger yang berkaitan dengan tradisi di kawasan Bromo.','Kawasan Tengger'],
-  ['Seblang','Tradisi ritual masyarakat Osing yang dikenal di Banyuwangi.','Banyuwangi'],
-  ['Karapan Sapi','Tradisi perlombaan pacuan sapi yang dikenal dari Madura.','Madura'],
-  ['Larung Sesaji','Tradisi sedekah atau persembahan yang dilakukan di sejumlah komunitas pesisir.','Berbagai wilayah']
- ]},
- {id:'rumah',name:'Rumah Adat',desc:'Mengenal bentuk arsitektur tradisional dan nilai kehidupan masyarakat.',items:[
-  ['Rumah Osing','Rumah tradisional masyarakat Osing dengan bentuk dan tata ruang khas.','Banyuwangi'],
-  ['Rumah Tengger','Hunian tradisional yang berkembang menyesuaikan lingkungan pegunungan.','Kawasan Tengger'],
-  ['Rumah Tanean Lanjhang','Pola permukiman tradisional masyarakat Madura dengan susunan rumah dalam satu halaman.','Madura']
- ]},
- {id:'pakaian',name:'Pakaian Adat',desc:'Mengenal busana tradisional dan identitas daerah.',items:[
-  ['Pesa’an Madura','Busana tradisional Madura yang dikenal dengan paduan warna kontras.','Madura'],
-  ['Kebaya Jawa','Busana tradisional yang memiliki beragam bentuk dan pemakaian.','Berbagai wilayah'],
-  ['Busana Osing','Busana tradisional yang digunakan dalam berbagai kegiatan budaya masyarakat Osing.','Banyuwangi']
- ]},
- {id:'senjata',name:'Senjata Tradisional',desc:'Mengenal benda warisan sejarah dan tradisi masyarakat.',items:[
-  ['Clurit','Senjata tradisional yang sangat dikenal sebagai bagian dari identitas budaya Madura.','Madura'],
-  ['Keris','Senjata tradisional sekaligus karya budaya yang memiliki nilai sejarah dan simbolik.','Berbagai wilayah'],
-  ['Bendo','Peralatan tradisional yang dikenal dalam kehidupan masyarakat.','Berbagai wilayah']
- ]}
-];
+function toggleMenu() {
+  document.getElementById('mainNav').classList.toggle('open');
+}
+document.querySelectorAll('#mainNav a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('mainNav').classList.remove('open');
+  });
+});
 
-const places = [
- ['Surabaya','Kota metropolitan dan pusat budaya Jawa Timur.'],
- ['Malang','Dikenal dengan sejarah, pendidikan, dan ragam keseniannya.'],
- ['Blitar','Memiliki warisan sejarah dan tradisi lokal.'],
- ['Kediri','Memiliki sejarah panjang yang berkaitan dengan kerajaan masa lampau.'],
- ['Banyuwangi','Dikenal dengan budaya Osing dan berbagai kesenian.'],
- ['Ponorogo','Dikenal luas dengan kesenian Reog Ponorogo.'],
- ['Madiun','Memiliki tradisi dan kesenian lokal.'],
- ['Jember','Memiliki kegiatan budaya dan festival daerah.'],
- ['Tulungagung','Memiliki kerajinan dan tradisi lokal.'],
- ['Madura','Memiliki bahasa, tradisi, dan kesenian khas.'],
- ['Probolinggo','Berada di kawasan yang dekat dengan budaya Tengger.'],
- ['Pasuruan','Memiliki keragaman tradisi masyarakat.']
-];
-
-function showPage(id) {
- document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
- const target=document.getElementById(id);
- if(target) target.classList.add('active');
- window.scrollTo(0,0);
- if(id==='collection') renderCollection();
- if(id==='stories') renderStories();
- if(id==='calendar') renderCalendar();
-}
-
-function openCategory(id) {
- const cat=categories.find(c=>c.id===id);
- if(!cat)return;
- document.getElementById('categoryTitle').textContent=cat.name;
- document.getElementById('categoryDescription').textContent=cat.desc;
- document.getElementById('categorySearch').value='';
- renderCategory('');
- showPage('category');
-}
-
-function renderCategory(term) {
- const cat=categories.find(c=>c.name===document.getElementById('categoryTitle').textContent);
- if(!cat)return;
- const list=cat.items.filter(x=>(x[0]+' '+x[1]+' '+x[2]).toLowerCase().includes(term.toLowerCase()));
- document.getElementById('categoryItems').innerHTML=list.map(x=>`
- <div class="card">
-  <span class="number">CULTURAL ARCHIVE</span>
-  <h3>${x[0]}</h3><p>${x[1]}</p>
-  <p style="margin-top:10px"><b>Asal:</b> ${x[2]}</p>
-  <button class="btn btn-green" onclick="saveCulture('${x[0]}')">♡ SIMPAN</button>
- </div>`).join('') || '<p>Informasi tidak ditemukan.</p>';
-}
-
-function categoryCards(target) {
- document.getElementById(target).innerHTML=categories.map((c,i)=>`
- <div class="card">
-  <span class="number">0${i+1} / CULTURAL CATEGORY</span>
-  <h3>${c.name}</h3><p>${c.desc}</p>
-  <button class="btn btn-green" onclick="openCategory('${c.id}')">JELAJAHI →</button>
- </div>`).join('');
-}
-
-function renderMap() {
- document.getElementById('mapGrid').innerHTML=places.map((p,i)=>`
- <button class="map-place" onclick="selectPlace(${i},this)">${p[0]}</button>`).join('');
-}
-function selectPlace(i,el) {
- document.querySelectorAll('.map-place').forEach(b=>b.classList.remove('selected'));
- el.classList.add('selected');
- document.getElementById('mapResult').innerHTML='<h2>'+places[i][0]+'</h2><p>'+places[i][1]+'</p><p class="small">Pilih kategori budaya untuk melanjutkan eksplorasi.</p>';
-}
-
-function getSaved(){return JSON.parse(localStorage.getItem('eastjavaSaved')||'[]')}
-function saveCulture(name) {
- let a=getSaved();
- if(a.includes(name)) a=a.filter(x=>x!==name); else a.push(name);
- localStorage.setItem('eastjavaSaved',JSON.stringify(a));
- updateCount();
- alert(a.includes(name)?'Berhasil disimpan ke My Collection!':'Koleksi diperbarui.');
-}
-function updateCount(){document.getElementById('count').textContent=getSaved().length}
-function renderCollection(){
- const a=getSaved();
- document.getElementById('collectionItems').innerHTML=a.length?a.map(n=>`
- <div class="item-row"><b>${n}</b><button class="btn btn-green" onclick="removeSaved('${n}')">Hapus</button></div>`).join(''):'<div class="notice">Belum ada budaya yang disimpan. Jelajahi kategori budaya dan tekan tombol simpan.</div>';
-}
-function removeSaved(n){
- localStorage.setItem('eastjavaSaved',JSON.stringify(getSaved().filter(x=>x!==n)));
- updateCount();renderCollection();
-}
-
-const cultureDays=[
- {name:'Reog Ponorogo',origin:'Ponorogo',desc:'Reog Ponorogo merupakan seni pertunjukan tradisional yang memiliki tokoh dan properti khas, termasuk dadak merak. Kesenian ini menjadi salah satu ikon budaya Jawa Timur.'},
- {name:'Tari Remo',origin:'Jawa Timur',desc:'Tari Remo merupakan tarian tradisional yang dikenal dengan gerakan dinamis dan sering ditampilkan dalam penyambutan tamu.'},
- {name:'Karapan Sapi',origin:'Madura',desc:'Karapan Sapi merupakan tradisi perlombaan pacuan sapi yang dikenal luas sebagai bagian dari budaya masyarakat Madura.'},
- {name:'Seblang',origin:'Banyuwangi',desc:'Seblang merupakan tradisi ritual masyarakat Osing yang memiliki nilai budaya dan spiritual.'}
-];
-const todayCulture=cultureDays[Math.floor(Date.now()/86400000)%cultureDays.length];
-function renderDay(){
- document.getElementById('dayTitle').textContent=todayCulture.name;
- document.getElementById('dayDescription').textContent=todayCulture.desc;
- document.getElementById('dayOrigin').textContent='ASAL DAERAH: '+todayCulture.origin;
- document.getElementById('homeDayTitle').textContent=todayCulture.name;
- document.getElementById('homeDayText').textContent=todayCulture.desc;
-}
-function saveDay(){saveCulture(todayCulture.name)}
-
-const quizzes={
- easy:[
-  {q:'Reog Ponorogo berasal dari daerah mana?',o:['Ponorogo','Surabaya','Blitar'],a:0,e:'Reog Ponorogo dikenal berasal dari Ponorogo.'},
-  {q:'Karapan Sapi dikenal sebagai tradisi dari...',o:['Malang','Madura','Kediri'],a:1,e:'Karapan Sapi merupakan tradisi masyarakat Madura.'},
-  {q:'Tari Remo merupakan salah satu kesenian dari...',o:['Jawa Timur','Sumatera Barat','Kalimantan'],a:0,e:'Tari Remo berkembang sebagai salah satu kesenian tradisional Jawa Timur.'}
- ],
- medium:[
-  {q:'Masyarakat Osing banyak dikenal berasal dari...',o:['Banyuwangi','Madiun','Ngawi'],a:0,e:'Masyarakat Osing merupakan salah satu kelompok masyarakat di Banyuwangi.'},
-  {q:'Seblang merupakan tradisi yang dikenal dari masyarakat...',o:['Tengger','Osing','Madura'],a:1,e:'Seblang dikenal sebagai tradisi masyarakat Osing di Banyuwangi.'},
-  {q:'Ludruk merupakan bentuk seni...',o:['Drama tradisional','Kerajinan logam','Tari klasik'],a:0,e:'Ludruk merupakan seni pertunjukan drama tradisional.'}
- ],
- hard:[
-  {q:'Tanean Lanjhang dikenal sebagai pola permukiman tradisional masyarakat...',o:['Madura','Osing','Tengger'],a:0,e:'Tanean Lanjhang merupakan pola permukiman tradisional masyarakat Madura.'},
-  {q:'Upacara Kasada berkaitan erat dengan masyarakat...',o:['Pesisir Madura','Tengger','Osing'],a:1,e:'Kasada merupakan upacara masyarakat Tengger di kawasan Bromo.'},
-  {q:'Bahasa Osing merupakan salah satu identitas bahasa masyarakat...',o:['Banyuwangi','Ponorogo','Pacitan'],a:0,e:'Bahasa Osing digunakan oleh masyarakat Osing di Banyuwangi.'}
- ]
+// DATA DAERAH
+const regions = {
+  "Surabaya": "Surabaya merupakan ibu kota Provinsi Jawa Timur. Kota ini dikenal dengan sejarah perjuangan, budaya Arek, dan kesenian Ludruk.",
+  "Blitar": "Blitar memiliki keterkaitan sejarah dengan Bung Karno serta berbagai tradisi dan kesenian lokal.",
+  "Malang": "Malang memiliki keberagaman budaya, termasuk kesenian topeng dan tradisi masyarakat setempat.",
+  "Ponorogo": "Ponorogo dikenal sebagai daerah asal seni pertunjukan Reog Ponorogo.",
+  "Banyuwangi": "Banyuwangi memiliki kesenian Gandrung dan tradisi budaya masyarakat Using.",
+  "Madura": "Madura dikenal dengan Karapan Sapi, budaya masyarakat Madura, dan tradisi lokalnya.",
+  "Kediri": "Kediri memiliki warisan sejarah panjang dan kesenian tradisional.",
+  "Tulungagung": "Tulungagung memiliki beragam kesenian dan kerajinan tradisional.",
+  "Jember": "Jember dikenal dengan keberagaman masyarakat dan kegiatan budaya daerah.",
+  "Batu": "Kota Batu memiliki tradisi masyarakat pegunungan dan kekayaan budaya lokal.",
+  "Pasuruan": "Pasuruan memiliki keberagaman tradisi masyarakat pesisir dan pegunungan.",
+  "Probolinggo": "Probolinggo memiliki kekayaan budaya masyarakat sekitar kawasan Tengger.",
+  "Mojokerto": "Mojokerto berkaitan erat dengan peninggalan sejarah Kerajaan Majapahit.",
+  "Lamongan": "Lamongan memiliki tradisi pesisir dan kesenian masyarakat setempat.",
+  "Gresik": "Gresik dikenal dengan sejarah penyebaran Islam dan tradisi masyarakat pesisir.",
+  "Sidoarjo": "Sidoarjo memiliki kesenian dan tradisi masyarakat yang berkembang di kawasan pesisir.",
+  "Madiun": "Madiun memiliki kesenian tradisional dan warisan budaya lokal.",
+  "Magetan": "Magetan memiliki tradisi masyarakat lereng Gunung Lawu.",
+  "Trenggalek": "Trenggalek memiliki budaya masyarakat pesisir dan tradisi lokal.",
+  "Pacitan": "Pacitan memiliki kekayaan budaya masyarakat pesisir dan tradisi daerah."
 };
-let quizList=[],quizIndex=0,quizScore=0,answered=false;
-function startQuiz(level){
- quizList=quizzes[level];quizIndex=0;quizScore=0;
- document.getElementById('quizStart').classList.add('hidden');
- document.getElementById('quizResult').classList.add('hidden');
- document.getElementById('quizArea').classList.remove('hidden');
- showQuestion();
-}
-function showQuestion(){
- answered=false;
- const q=quizList[quizIndex];
- document.getElementById('quizProgress').textContent='QUESTION '+(quizIndex+1)+' OF '+quizList.length;
- document.getElementById('quizQuestion').textContent=q.q;
- document.getElementById('quizFeedback').classList.add('hidden');
- document.getElementById('nextQuestion').classList.add('hidden');
- document.getElementById('quizOptions').innerHTML=q.o.map((x,i)=>`<button class="option" onclick="answerQuiz(${i},this)">${x}</button>`).join('');
-}
-function answerQuiz(i,el){
- if(answered)return;answered=true;
- const q=quizList[quizIndex];
- document.querySelectorAll('#quizOptions button').forEach((b,j)=>{
-  b.disabled=true;
-  if(j===q.a)b.classList.add('correct');
- });
- if(i===q.a)quizScore++;
- else el.classList.add('wrong');
- const f=document.getElementById('quizFeedback');
- f.textContent=(i===q.a?'Benar! ':'Belum tepat. ')+q.e;
- f.classList.remove('hidden');
- document.getElementById('nextQuestion').classList.remove('hidden');
- document.getElementById('nextQuestion').textContent=quizIndex===quizList.length-1?'Lihat hasil':'Selanjutnya →';
-}
-function nextQuiz(){
- if(quizIndex<quizList.length-1){quizIndex++;showQuestion();return}
- document.getElementById('quizArea').classList.add('hidden');
- const r=document.getElementById('quizResult');
- r.classList.remove('hidden');
- r.innerHTML='<h2>Quiz Completed!</h2><p>Skor kamu: <b>'+quizScore+' / '+quizList.length+'</b></p><p>'+ (quizScore===quizList.length?'Luar biasa! Semua jawaban benar.':'Terus belajar dan coba lagi, ya!')+'</p><button class="btn btn-green" onclick="resetQuiz()">Coba lagi</button>';
-}
-function resetQuiz(){
- document.getElementById('quizStart').classList.remove('hidden');
- document.getElementById('quizResult').classList.add('hidden');
+
+const regionGrid = document.getElementById('regionGrid');
+Object.keys(regions).forEach((region, index) => {
+  const button = document.createElement('button');
+  button.className = 'region-btn';
+  button.textContent = region;
+  button.onclick = () => showRegion(region, button);
+  regionGrid.appendChild(button);
+});
+function showRegion(region, button) {
+  document.querySelectorAll('.region-btn').forEach(b => b.classList.remove('active'));
+  button.classList.add('active');
+  document.getElementById('regionInfo').innerHTML =
+    '<strong>' + region + '</strong><p>' + regions[region] + '</p>';
 }
 
-function setupCompare(){
- const all=categories.flatMap(c=>c.items.map(x=>({name:x[0],desc:x[1],origin:x[2],category:c.name})));
- window.compareData=all;
- ['compareA','compareB'].forEach(id=>{
-  document.getElementById(id).innerHTML=all.map((x,i)=>`<option value="${i}">${x.name}</option>`).join('');
- });
- if(all.length>1)document.getElementById('compareB').selectedIndex=1;
-}
-function compareCulture(){
- const a=compareData[+document.getElementById('compareA').value];
- const b=compareData[+document.getElementById('compareB').value];
- document.getElementById('compareResult').innerHTML=[a,b].map(x=>`
- <div class="card"><span class="number">${x.category}</span><h3>${x.name}</h3><p>${x.desc}</p><p style="margin-top:12px"><b>Asal:</b> ${x.origin}</p></div>`).join('');
+// CULTURE DATA
+const cultures = {
+  reog: {
+    name: "Reog Ponorogo",
+    area: "Ponorogo",
+    type: "Kesenian dan Pertunjukan",
+    desc: "Seni pertunjukan tradisional dari Ponorogo yang dikenal dengan Dadak Merak, tari, dan musik pengiring."
+  },
+  karapan: {
+    name: "Karapan Sapi",
+    area: "Madura",
+    type: "Tradisi",
+    desc: "Tradisi perlombaan sapi yang menjadi salah satu identitas budaya masyarakat Madura."
+  },
+  ludruk: {
+    name: "Ludruk",
+    area: "Jawa Timur",
+    type: "Seni Pertunjukan",
+    desc: "Seni teater tradisional yang menggunakan bahasa dan kehidupan masyarakat Jawa Timur."
+  },
+  remo: {
+    name: "Tari Remo",
+    area: "Jawa Timur",
+    type: "Tarian Tradisional",
+    desc: "Tarian tradisional yang dikenal dengan gerakan dinamis dan penggunaan gelang kaki berbunyi."
+  },
+  yadnya: {
+    name: "Yadnya Kasada",
+    area: "Masyarakat Tengger",
+    type: "Tradisi dan Upacara Adat",
+    desc: "Upacara adat masyarakat Tengger yang berkaitan dengan tradisi kepercayaan dan kehidupan masyarakat setempat."
+  }
+};
+
+// CULTURE OF THE DAY
+const cultureKeys = Object.keys(cultures);
+let dayIndex = 0;
+function nextCulture() {
+  dayIndex = (dayIndex + 1) % cultureKeys.length;
+  const culture = cultures[cultureKeys[dayIndex]];
+  document.getElementById('dayTitle').textContent = culture.name;
+  document.getElementById('dayDescription').textContent =
+    culture.desc + " Berasal dari: " + culture.area + ".";
 }
 
-function submitStory(){
- const name=document.getElementById('storyName').value.trim();
- const place=document.getElementById('storyPlace').value.trim();
- const title=document.getElementById('storyTitle').value.trim();
- const body=document.getElementById('storyText').value.trim();
- if(!name||!place||!title||!body){alert('Lengkapi semua kolom terlebih dahulu.');return}
- let stories=JSON.parse(localStorage.getItem('eastjavaStories')||'[]');
- stories.unshift({name,place,title,body,status:'Menunggu peninjauan'});
- localStorage.setItem('eastjavaStories',JSON.stringify(stories));
- ['storyName','storyPlace','storyTitle','storyText'].forEach(id=>document.getElementById(id).value='');
- document.getElementById('storyMessage').textContent='Cerita berhasil disimpan pada browser ini.';
- renderStories();
-}
-function renderStories(){
- const a=JSON.parse(localStorage.getItem('eastjavaStories')||'[]');
- document.getElementById('storyList').innerHTML=a.length?a.map(s=>`
- <div class="card" style="margin-bottom:12px"><span class="number">${s.place} · ${s.status}</span><h3>${escapeHTML(s.title)}</h3><p>${escapeHTML(s.body)}</p><p class="small">Ditulis oleh ${escapeHTML(s.name)}</p></div>`).join(''):'<p class="small">Belum ada cerita yang dikirim dari browser ini.</p>';
-}
-function escapeHTML(s){
- return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+// COMPARISON
+function compareCulture() {
+  const one = document.getElementById('cultureOne').value;
+  const two = document.getElementById('cultureTwo').value;
+  const result = document.getElementById('compareResult');
+
+  if (one === two) {
+    result.innerHTML = '<div style="grid-column:1/-1">Pilih dua budaya yang berbeda untuk dibandingkan.</div>';
+    return;
+  }
+
+  const a = cultures[one];
+  const b = cultures[two];
+
+  result.innerHTML = `
+    <div>
+      <div class="card-tag">Budaya pertama</div>
+      <h3>${a.name}</h3>
+      <p><strong>Daerah:</strong> ${a.area}</p>
+      <p><strong>Kategori:</strong> ${a.type}</p>
+      <p>${a.desc}</p>
+    </div>
+    <div>
+      <div class="card-tag">Budaya kedua</div>
+      <h3>${b.name}</h3>
+      <p><strong>Daerah:</strong> ${b.area}</p>
+      <p><strong>Kategori:</strong> ${b.type}</p>
+      <p>${b.desc}</p>
+    </div>`;
 }
 
-const events=[
- {date:'2026-01-01',name:'Contoh agenda budaya awal tahun',place:'Jawa Timur'},
- {date:'2026-08-17',name:'Kegiatan budaya peringatan kemerdekaan',place:'Berbagai daerah'},
- {date:'2026-11-01',name:'Contoh agenda pertunjukan budaya daerah',place:'Jawa Timur'},
- {date:'2026-12-01',name:'Contoh kegiatan pelestarian budaya',place:'Jawa Timur'}
-];
-function renderCalendar(){
- const input=document.getElementById('calendarMonth');
- if(!input.value)input.value=new Date().toISOString().slice(0,7);
- const month=input.value;
- const filtered=events.filter(e=>e.date.startsWith(month));
- document.getElementById('calendarList').innerHTML=filtered.length?filtered.map(e=>`
- <div class="item-row"><div><b>${e.name}</b><p class="small">${e.place}</p></div><span>${e.date}</span></div>`).join(''):'<div class="notice">Belum ada agenda contoh untuk bulan ini.</div>';
+// MY COLLECTION
+function getSaved() {
+  return JSON.parse(localStorage.getItem('eastjava_collection') || '[]');
 }
-document.getElementById('calendarMonth').addEventListener('change',renderCalendar);
+function saveCulture(key) {
+  const saved = getSaved();
+  if (saved.includes(key)) {
+    alert('Budaya ini sudah ada di koleksimu!');
+    return;
+  }
+  saved.push(key);
+  localStorage.setItem('eastjava_collection', JSON.stringify(saved));
+  renderCollection();
+}
+function removeCulture(key) {
+  const saved = getSaved().filter(item => item !== key);
+  localStorage.setItem('eastjava_collection', JSON.stringify(saved));
+  renderCollection();
+}
+function renderCollection() {
+  const cards = document.getElementById('cultureCards');
+  const list = document.getElementById('savedList');
+  cards.innerHTML = '';
+  list.innerHTML = '';
+  Object.keys(cultures).forEach(key => {
+    const c = cultures[key];
+    const card = document.createElement('div');
+    card.className = 'card';
+    const body = document.createElement('div');
+    body.className = 'card-body';
+    const tag = document.createElement('div');
+    tag.className = 'card-tag';
+    tag.textContent = c.area;
+    const title = document.createElement('h3');
+    title.textContent = c.name;
+    const desc = document.createElement('p');
+    desc.textContent = c.desc;
+    const button = document.createElement('button');
+    button.textContent = '♡ Simpan ke Koleksi';
+    button.onclick = () => saveCulture(key);
+    body.append(tag, title, desc, button);
+    card.appendChild(body);
+    cards.appendChild(card);
+  });
 
-categoryCards('homeCategories');
-categoryCards('exploreCategories');
-renderMap();
-renderDay();
-setupCompare();
-updateCount();
+  const saved = getSaved();
+  if (!saved.length) {
+    list.textContent = 'Belum ada budaya yang disimpan.';
+    return;
+  }
+  saved.forEach(key => {
+    if (!cultures[key]) return;
+    const item = document.createElement('div');
+    item.className = 'collection-item';
+    const name = document.createElement('strong');
+    name.textContent = cultures[key].name;
+    const remove = document.createElement('button');
+    remove.textContent = 'Hapus';
+    remove.onclick = () => removeCulture(key);
+    item.append(name, remove);
+    list.appendChild(item);
+  });
+}
+renderCollection();
+
+// STORIES
+function getStories() {
+  return JSON.parse(localStorage.getItem('eastjava_stories') || '[]');
+}
+document.getElementById('storyForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const story = {
+    name: document.getElementById('storyName').value.trim(),
+    region: document.getElementById('storyRegion').value.trim(),
+    title: document.getElementById('storyTitle').value.trim(),
+    text: document.getElementById('storyText').value.trim()
+  };
+  if (!story.name || !story.region || !story.title || !story.text) {
+    alert('Lengkapi semua bagian cerita terlebih dahulu.');
+    return;
+  }
+  const stories = getStories();
+  stories.unshift(story);
+  localStorage.setItem('eastjava_stories', JSON.stringify(stories));
+  this.reset();
+  renderStories();
+  alert('Cerita berhasil disimpan di perangkat ini!');
+});
+function renderStories() {
+  const list = document.getElementById('storyList');
+  const stories = getStories();
+  list.innerHTML = '';
+  if (!stories.length) {
+    list.textContent = 'Belum ada cerita yang dibagikan. Jadilah yang pertama!';
+    return;
+  }
+  stories.forEach(story => {
+    const article = document.createElement('div');
+    article.className = 'event';
+    const title = document.createElement('h3');
+    title.textContent = story.title;
+    const meta = document.createElement('p');
+    meta.className = 'card-tag';
+    meta.textContent = story.region + ' · oleh ' + story.name;
+    const content = document.createElement('p');
+    content.textContent = story.text;
+    article.append(title, meta, content);
+    list.appendChild(article);
+  });
+}
+renderStories();
 </script>
+
 </body>
 </html>
