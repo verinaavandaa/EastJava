@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore East Java</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f4ebdd;color:#292e29;font-family:'DM Sans',sans-serif}
+header{padding:20px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #dfd4c3;gap:15px;flex-wrap:wrap}
+.logo{font: bold 29px 'Playfair Display';color:#183f35;text-decoration:none}
+nav{display:flex;gap:18px;flex-wrap:wrap}
+nav a{font-size:12px;color:#183f35;text-decoration:none;font-weight:700}
+.hero{background:#183f35;color:#f4ebdd;padding:65px 7%}
+.hero small{color:#d5b887;letter-spacing:3px}
+h1,h2,h3{font-family:'Playfair Display',serif}
+.hero h1{font-size:clamp(40px,6vw,65px);margin:18px 0}
+.hero p{line-height:1.8;max-width:650px;color:#e4dfd4}
+main{padding:45px 7%}
+.heading{margin-bottom:25px}
+.heading h2{font-size:34px;color:#183f35}
+.heading p{color:#77776c;margin-top:8px;line-height:1.7}
+.search{width:100%;padding:15px;border:1px solid #dfd4c3;background:#fffaf2;margin-bottom:20px}
+.map{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.place{padding:18px 10px;background:#fffaf2;border:1px solid #dfd4c3;color:#183f35;font-weight:700;cursor:pointer}
+.place:hover,.place.active{background:#183f35;color:white}
+.result{padding:23px;background:#e8decd;margin-top:20px;line-height:1.8;min-height:110px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:#fffaf2;padding:24px;border:1px solid #e5dccc}
+.card small{color:#b96f4a;letter-spacing:2px}
+.card h3{font-size:24px;color:#183f35;margin:13px 0}
+.card p{font-size:13px;color:#77776c;line-height:1.8}
+button.action{padding:12px 17px;background:#183f35;color:white;border:0;margin-top:15px;cursor:pointer}
+footer{background:#183f35;color:#f4ebdd;text-align:center;padding:30px;line-height:2}
+@media(max-width:700px){.map{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:450px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+<a class="logo" href="index.html">EastJava.</a>
+<nav>
+<a href="index.html">HOME</a>
+<a href="explore.html">EXPLORE</a>
+<a href="quiz.html">QUIZ</a>
+<a href="index.html">COLLECTION</a>
+</nav>
+</header>
+
+<section class="hero">
+<small>01 / DISCOVER THE HERITAGE</small>
+<h1>Explore East Java.</h1>
+<p>Setiap daerah memiliki cerita. Temukan keberagaman budaya, tradisi, bahasa, dan kesenian dari berbagai wilayah Jawa Timur.</p>
+</section>
+
+<main>
+<section>
+<div class="heading">
+<h2>Discover the Regions</h2>
+<p>Pilih wilayah untuk membaca informasi singkat tentang daerah tersebut.</p>
+</div>
+<input class="search" id="search" placeholder="Cari nama kabupaten atau kota..." oninput="filterPlaces()">
+<div class="map" id="map"></div>
+<div class="result" id="result">Pilih salah satu daerah untuk memulai eksplorasi.</div>
+</section>
+
+<section style="margin-top:55px">
+<div class="heading">
+<h2>Explore Cultural Categories</h2>
+<p>Kenali berbagai aspek kebudayaan Jawa Timur.</p>
+</div>
+<div class="grid" id="categories"></div>
+</section>
+</main>
+
+<footer>
+<h2>EastJava.</h2>
+<p>The Living Heritage of East Java</p>
+<p>Explore · Discover · Preserve</p>
+</footer>
+
+<script>
+const regions=[
+["Surabaya","Kota metropolitan dan pusat kegiatan budaya di Jawa Timur."],
+["Malang","Wilayah dengan sejarah, kesenian, dan tradisi yang beragam."],
+["Blitar","Daerah yang memiliki warisan sejarah dan tradisi lokal."],
+["Kediri","Wilayah dengan sejarah panjang sejak masa kerajaan."],
+["Banyuwangi","Dikenal dengan budaya Osing dan kesenian tradisional."],
+["Ponorogo","Dikenal luas dengan kesenian Reog Ponorogo."],
+["Madiun","Memiliki tradisi dan kesenian khas daerah."],
+["Jember","Memiliki kegiatan budaya dan festival daerah."],
+["Tulungagung","Dikenal dengan kerajinan dan tradisi lokal."],
+["Madura","Wilayah dengan bahasa, tradisi, dan kesenian khas."],
+["Probolinggo","Berada dekat kawasan budaya Tengger dan Bromo."],
+["Pasuruan","Memiliki keberagaman tradisi masyarakat."],
+["Pacitan","Dikenal dengan lanskap alam dan tradisi lokal."],
+["Lumajang","Memiliki warisan budaya masyarakat di kawasan selatan."],
+["Sidoarjo","Memiliki tradisi dan budaya masyarakat pesisir."],
+["Gresik","Memiliki sejarah perdagangan dan budaya pesisir."],
+["Lamongan","Memiliki tradisi masyarakat pesisir utara."],
+["Bojonegoro","Memiliki kerajinan dan tradisi lokal."],
+["Tuban","Dikenal dengan sejarah dan budaya pesisir."],
+["Ngawi","Memiliki warisan sejarah dan tradisi daerah."]
+];
+
+const categories=[
+["Suku","Mengenal keberagaman masyarakat Jawa Timur."],
+["Bahasa","Mempelajari bahasa dan dialek daerah."],
+["Kesenian dan Pertunjukan","Mengenal tari, musik, dan pertunjukan tradisional."],
+["Tradisi dan Upacara Adat","Menjelajahi tradisi yang diwariskan antargenerasi."],
+["Rumah Adat","Mengenal arsitektur dan hunian tradisional."],
+["Pakaian Adat","Mengenal busana dan identitas daerah."],
+["Senjata Tradisional","Mengenal benda warisan sejarah dan budaya."]
+];
+
+function renderPlaces(list){
+ document.getElementById("map").innerHTML=list.map((r,i)=>
+ `<button class="place" onclick="chooseRegion('${r[0]}','${r[1]}',this)">${r[0]}</button>`
+ ).join("");
+}
+function chooseRegion(name,description,button){
+ document.querySelectorAll(".place").forEach(x=>x.classList.remove("active"));
+ button.classList.add("active");
+ document.getElementById("result").innerHTML=
+ `<h2>${name}</h2><p>${description}</p><p>Informasi ini merupakan pengantar eksplorasi wilayah. Data budaya khusus daerah dapat terus ditambahkan.</p>`;
+}
+function filterPlaces(){
+ const q=document.getElementById("search").value.toLowerCase();
+ renderPlaces(regions.filter(r=>r[0].toLowerCase().includes(q)));
+}
+document.getElementById("categories").innerHTML=categories.map((c,i)=>
+ `<article class="card">
+ <small>0${i+1} / CULTURAL ARCHIVE</small>
+ <h3>${c[0]}</h3><p>${c[1]}</p>
+ <button class="action" onclick="alert('Kategori ${c[0]}. Silakan lanjutkan melalui halaman kategori di website.')">JELAJAHI →</button>
+ </article>`
+).join("");
+renderPlaces(regions);
+</script>
+</body>
+</html>
