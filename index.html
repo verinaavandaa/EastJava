@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#183f35">
+  <meta name="description" content="EastJava — jelajahi warisan budaya Jawa Timur melalui peta, cerita, kuis, dan kalender budaya.">
+  <title>EastJava — The Living Heritage of East Java</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="announcement">A DIGITAL JOURNEY THROUGH EAST JAVA <span>✦</span> EXPLORE · DISCOVER · PRESERVE</div>
+
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="EastJava home">East<span>Java</span><i>.</i></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false">☰</button>
+    <nav class="main-nav" id="mainNav">
+      <a href="#home" data-nav="home">Home</a>
+      <a href="#explore" data-nav="explore">Explore</a>
+      <a href="#quiz" data-nav="quiz">Quiz</a>
+      <a href="#comparison" data-nav="comparison">Comparison</a>
+      <a href="#stories" data-nav="stories">Stories</a>
+      <a href="#calendar" data-nav="calendar">Calendar</a>
+      <a href="#collection" data-nav="collection" class="nav-collection">My Collection <span id="savedCount">0</span></a>
+    </nav>
+  </header>
+
+  <main id="app" tabindex="-1">
+    <section class="hero page-view" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">THE LIVING HERITAGE OF EAST JAVA</p>
+        <h1>Every place has a story. <em>Every culture has a soul.</em></h1>
+        <p class="hero-description">Jelajahi keberagaman budaya Jawa Timur—dari bahasa dan kesenian hingga tradisi yang diwariskan lintas generasi.</p>
+        <div class="hero-actions">
+          <a class="button button-dark" href="#explore">Mulai menjelajah <span>↗</span></a>
+          <a class="text-link" href="#culture-day">Temukan budaya hari ini <span>→</span></a>
+        </div>
+        <div class="hero-note"><span class="note-line"></span><span>36 kabupaten/kota · 1 provinsi · Ribuan cerita</span></div>
+      </div>
+      <div class="hero-art" role="img" aria-label="Ilustrasi artistik pegunungan dan motif budaya Jawa Timur">
+        <div class="art-sun"></div>
+        <div class="art-mountain mountain-back"></div>
+        <div class="art-mountain mountain-front"></div>
+        <div class="art-label">EAST JAVA<br><b>INDONESIA</b></div>
+        <div class="art-caption">A LAND OF MANY STORIES</div>
+      </div>
+    </section>
+
+    <section class="intro-strip">
+      <p>MORE THAN A DESTINATION</p>
+      <h2>Kenali warisan. Hargai perbedaan.<br><em>Jaga cerita tetap hidup.</em></h2>
+      <span class="strip-mark">✳</span>
+    </section>
+
+    <section class="section" id="explore">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">01 / EXPLORE THE HERITAGE</p>
+          <h2>Explore East Java</h2>
+          <p class="section-subtitle">Pilih kategori untuk menemukan kekayaan budaya dari berbagai daerah.</p>
+        </div>
+        <span class="heading-side">DISCOVER<br>THE DETAILS ↘</span>
+      </div>
+
+      <div class="category-grid" id="categoryGrid"></div>
+
+      <div class="map-panel">
+        <div class="map-copy">
+          <p class="eyebrow">CULTURE BY REGION</p>
+          <h3>One province,<br><em>many identities.</em></h3>
+          <p>Jelajahi contoh budaya berdasarkan wilayah asalnya. Pilih salah satu daerah untuk melihat cerita yang tersedia.</p>
+          <a class="text-link" href="#map">Buka peta budaya <span>→</span></a>
+        </div>
+        <div class="map-visual" id="map">
+          <div class="map-watermark">JATIM</div>
+          <div class="map-dots" id="mapDots"></div>
+          <div class="map-footnote">PETA ILUSTRATIF · JAWA TIMUR</div>
+        </div>
+      </div>
+      <div class="region-results" id="regionResults" aria-live="polite">
+        <p class="muted">Pilih salah satu titik wilayah pada peta untuk melihat contoh budaya.</p>
+      </div>
+    </section>
+
+    <section class="feature-band" id="culture-day">
+      <div class="feature-image">
+        <span class="image-kicker">TODAY'S CULTURAL NOTE</span>
+        <span class="feature-symbol">✺</span>
+      </div>
+      <div class="feature-copy">
+        <p class="eyebrow">02 / CULTURE OF THE DAY</p>
+        <h2 id="dailyTitle">Cerita budaya hari ini</h2>
+        <p id="dailyText">Temukan satu cerita budaya pilihan yang berganti setiap hari.</p>
+        <div class="daily-meta" id="dailyMeta"></div>
+        <a href="#explore" class="text-link">Jelajahi kategori budaya <span>→</span></a>
+      </div>
+    </section>
+
+    <section class="section quiz-teaser" id="quiz">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">03 / TEST YOUR KNOWLEDGE</p>
+          <h2>Culture Challenge</h2>
+          <p class="section-subtitle">Seberapa jauh kamu mengenal budaya Jawa Timur?</p>
+        </div>
+        <span class="heading-side">LEARN<br>AS YOU PLAY ↘</span>
+      </div>
+      <div class="quiz-levels">
+        <button class="level-card" data-level="easy">
+          <span class="level-number">01</span>
+          <span class="level-name">Easy</span>
+          <span class="level-desc">Kenali dasar-dasar budaya.</span>
+          <span class="level-arrow">↗</span>
+        </button>
+        <button class="level-card" data-level="medium">
+          <span class="level-number">02</span>
+          <span class="level-name">Medium</span>
+          <span class="level-desc">Uji pemahaman lebih dalam.</span>
+          <span class="level-arrow">↗</span>
+        </button>
+        <button class="level-card" data-level="hard">
+          <span class="level-number">03</span>
+          <span class="level-name">Hard</span>
+          <span class="level-desc">Tantangan untuk penjelajah.</span>
+          <span class="level-arrow">↗</span>
+        </button>
+      </div>
+      <div class="quiz-area" id="quizArea" hidden></div>
+    </section>
+
+    <section class="section comparison-section" id="comparison">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">04 / SEE THE DIFFERENCES</p>
+          <h2>Culture Comparison</h2>
+          <p class="section-subtitle">Bandingkan dua budaya dan temukan ciri khas masing-masing.</p>
+        </div>
+      </div>
+      <div class="comparison-box">
+        <div class="compare-select">
+          <label for="cultureA">PILIH BUDAYA PERTAMA</label>
+          <select id="cultureA"></select>
+        </div>
+        <div class="compare-symbol">VS</div>
+        <div class="compare-select">
+          <label for="cultureB">PILIH BUDAYA KEDUA</label>
+          <select id="cultureB"></select>
+        </div>
+        <button class="button button-dark compare-button" id="compareButton">Bandingkan ↗</button>
+      </div>
+      <div id="comparisonResult" class="comparison-result" aria-live="polite">
+        <p class="muted">Pilih dua budaya yang berbeda, lalu tekan tombol bandingkan.</p>
+      </div>
+    </section>
+
+    <section class="collection-banner" id="collection">
+      <div>
+        <p class="eyebrow">05 / YOUR PERSONAL ARCHIVE</p>
+        <h2>Keep what<br><em>moves you.</em></h2>
+        <p>Simpan cerita budaya favoritmu dan kumpulkan pengetahuan yang ingin kamu ingat.</p>
+        <a class="button button-light" href="#collection-list">Lihat koleksiku ↗</a>
+      </div>
+      <div class="collection-stamp"><span>MY</span><b>COLLECTION</b><i>✳</i></div>
+    </section>
+
+    <section class="section collection-list-section" id="collection-list">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">SAVED STORIES</p>
+          <h2>My Collection</h2>
+          <p class="section-subtitle">Daftar budaya yang kamu simpan di perangkat ini.</p>
+        </div>
+      </div>
+      <div id="collectionList" class="collection-grid"></div>
+    </section>
+
+    <section class="section stories-section" id="stories">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">06 / VOICES OF THE REGION</p>
+          <h2>Cerita dari Daerah</h2>
+          <p class="section-subtitle">Bagikan cerita, pengalaman, atau pengetahuan budaya dari daerahmu.</p>
+        </div>
+        <span class="heading-side">SHARE<br>YOUR STORY ↘</span>
+      </div>
+      <div class="stories-layout">
+        <form id="storyForm" class="story-form">
+          <h3>Kirim cerita budaya</h3>
+          <p class="form-note">Cerita yang dikirim akan tersimpan di browser ini sebagai draf lokal. Untuk publikasi lintas pengguna, website memerlukan database dan moderasi admin.</p>
+
+          <label for="storyName">Nama / nama pena</label>
+          <input id="storyName" maxlength="40" required placeholder="Contoh: Penjelajah Budaya">
+
+          <label for="storyRegion">Asal daerah</label>
+          <input id="storyRegion" maxlength="60" required placeholder="Contoh: Banyuwangi">
+
+          <label for="storyTitle">Judul cerita</label>
+          <input id="storyTitle" maxlength="80" required placeholder="Beri judul ceritamu">
+
+          <label for="storyText">Ceritamu</label>
+          <textarea id="storyText" rows="5" maxlength="1200" required placeholder="Ceritakan tradisi, pengalaman, atau pengetahuan budaya..."></textarea>
+
+          <button class="button button-dark" type="submit">Simpan cerita ↗</button>
+          <p class="form-feedback" id="storyFeedback" role="status"></p>
+        </form>
+
+        <div class="story-side">
+          <div class="story-quote">“Budaya hidup ketika ceritanya terus dibagikan.”</div>
+          <p class="eyebrow">COMMUNITY NOTES</p>
+          <h3>Cerita yang tersimpan</h3>
+          <div id="storyList"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section calendar-section" id="calendar">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">07 / MARK YOUR CULTURAL JOURNEY</p>
+          <h2>Culture Calendar</h2>
+          <p class="section-subtitle">Lihat contoh agenda dan catat acara budaya yang ingin kamu ikuti.</p>
+        </div>
+      </div>
+      <div class="calendar-wrap">
+        <div class="calendar-top">
+          <button id="prevMonth" aria-label="Bulan sebelumnya">←</button>
+          <h3 id="monthLabel"></h3>
+          <button id="nextMonth" aria-label="Bulan berikutnya">→</button>
+        </div>
+        <div class="calendar-weekdays">
+          <span>Min</span><span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span>
+        </div>
+        <div class="calendar-days" id="calendarDays"></div>
+        <div class="calendar-detail" id="calendarDetail">
+          <p class="muted">Pilih tanggal bertanda untuk melihat catatan agenda.</p>
+        </div>
+      </div>
+      <p class="calendar-disclaimer">Catatan: agenda contoh di situs ini bukan pengumuman acara resmi. Periksa penyelenggara atau dinas terkait untuk tanggal, lokasi, dan status acara terbaru.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#home">East<span>Java</span><i>.</i></a>
+    <p>The Living Heritage of East Java</p>
+    <div class="footer-links">
+      <a href="#explore">Explore</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#stories">Stories</a>
+      <a href="#calendar">Calendar</a>
+    </div>
+    <small>© <span id="year"></span> EastJava · A digital culture exploration project.</small>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
