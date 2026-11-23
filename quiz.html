@@ -1,283 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culture Challenge — EastJava</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f4ebdd;color:#292e29;font-family:'DM Sans',sans-serif}
+header{padding:20px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #dfd4c3;gap:15px;flex-wrap:wrap}
+.logo{font:bold 29px 'Playfair Display';color:#183f35;text-decoration:none}
+nav{display:flex;gap:18px;flex-wrap:wrap}
+nav a{font-size:12px;color:#183f35;text-decoration:none;font-weight:700}
+.hero{background:#183f35;color:#f4ebdd;padding:65px 7%}
+.hero small{color:#d5b887;letter-spacing:3px}
+h1,h2,h3{font-family:'Playfair Display',serif}
+.hero h1{font-size:55px;margin:18px 0}
+.hero p{line-height:1.8;color:#e4dfd4}
+main{max-width:850px;margin:auto;padding:45px 7%}
+.levels{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.card{background:#fffaf2;padding:23px;border:1px solid #e5dccc}
+.card small{color:#b96f4a;letter-spacing:2px}
+.card h2{font-size:27px;color:#183f35;margin:12px 0}
+.card p{font-size:13px;line-height:1.7;color:#77776c}
+button{cursor:pointer}
+.start,.next,.restart{background:#183f35;color:white;border:0;padding:13px 20px;margin-top:18px}
+.quizbox{background:#fffaf2;border:1px solid #e5dccc;padding:25px}
+.progress{height:7px;background:#e5dccc;margin:15px 0 25px}
+.bar{height:7px;background:#b96f4a;width:0%;transition:.3s}
+.question{font:27px 'Playfair Display';color:#183f35;line-height:1.4;margin:20px 0}
+.option{display:block;width:100%;padding:14px;margin:10px 0;text-align:left;background:white;border:1px solid #dfd4c3;color:#292e29}
+.option:hover{border-color:#183f35}
+.option.correct{background:#dcebdc;border-color:#4d895b}
+.option.wrong{background:#f4dcd5;border-color:#b96f4a}
+.feedback{background:#e8decd;padding:17px;line-height:1.7;margin-top:18px}
+.hidden{display:none}
+footer{background:#183f35;color:#f4ebdd;text-align:center;padding:30px;line-height:2}
+@media(max-width:600px){.levels{grid-template-columns:1fr}.hero h1{font-size:42px}}
+</style>
+</head>
+<body>
+<header>
+<a class="logo" href="index.html">EastJava.</a>
+<nav>
+<a href="index.html">HOME</a>
+<a href="explore.html">EXPLORE</a>
+<a href="quiz.html">QUIZ</a>
+<a href="index.html">COLLECTION</a>
+</nav>
+</header>
+
+<section class="hero">
+<small>02 / TEST YOUR KNOWLEDGE</small>
+<h1>Culture Challenge.</h1>
+<p>Seberapa jauh kamu mengenal budaya Jawa Timur? Pilih level dan uji pengetahuanmu!</p>
+</section>
+
+<main>
+<div id="choose">
+<h2 style="color:#183f35;font-size:32px;margin-bottom:10px">Choose Your Level</h2>
+<p style="color:#77776c;margin-bottom:25px">Pilih tingkat tantangan yang ingin kamu coba.</p>
+<div class="levels">
+<div class="card">
+<small>LEVEL 01</small><h2>Easy</h2>
+<p>Pertanyaan dasar untuk mengenal budaya Jawa Timur.</p>
+<button class="start" onclick="start('easy')">MULAI →</button>
+</div>
+<div class="card">
+<small>LEVEL 02</small><h2>Medium</h2>
+<p>Tantangan pengetahuan budaya tingkat menengah.</p>
+<button class="start" onclick="start('medium')">MULAI →</button>
+</div>
+<div class="card">
+<small>LEVEL 03</small><h2>Hard</h2>
+<p>Uji pengetahuanmu dengan pertanyaan lanjutan.</p>
+<button class="start" onclick="start('hard')">MULAI →</button>
+</div>
+</div>
+</div>
+
+<div id="game" class="hidden">
+<div class="quizbox">
+<p id="progressText" style="color:#b96f4a;font-weight:bold;font-size:12px"></p>
+<div class="progress"><div class="bar" id="bar"></div></div>
+<h2 class="question" id="question"></h2>
+<div id="options"></div>
+<div class="feedback hidden" id="feedback"></div>
+<button class="next hidden" id="next" onclick="nextQuestion()">SELANJUTNYA →</button>
+</div>
+</div>
+
+<div id="result" class="quizbox hidden">
+<h2 style="font-size:35px;color:#183f35">Challenge Completed!</h2>
+<p id="score" style="margin-top:15px;line-height:1.8"></p>
+<button class="restart" onclick="restart()">COBA LAGI</button>
+<button class="restart" onclick="home()">PILIH LEVEL</button>
+</div>
+</main>
+
+<footer>
+<h2>EastJava.</h2>
+<p>The Living Heritage of East Java</p>
+<p>Explore · Discover · Preserve</p>
+</footer>
+
+<script>
 const data={
-
 easy:[
-{
-q:"Reog Ponorogo berasal dari daerah mana?",
-o:["Ponorogo","Surabaya","Blitar","Malang"],
-a:0,
-e:"Reog Ponorogo dikenal berasal dari Ponorogo."
-},
-{
-q:"Karapan Sapi merupakan tradisi dari...",
-o:["Banyuwangi","Madura","Kediri","Madiun"],
-a:1,
-e:"Karapan Sapi merupakan tradisi masyarakat Madura."
-},
-{
-q:"Tari Remo merupakan kesenian tradisional dari...",
-o:["Jawa Timur","Bali","Sumatera Barat","Kalimantan"],
-a:0,
-e:"Tari Remo merupakan tarian tradisional Jawa Timur."
-},
-{
-q:"Kota yang dikenal dengan kesenian Reog adalah...",
-o:["Blitar","Ponorogo","Jember","Pasuruan"],
-a:1,
-e:"Ponorogo dikenal sebagai daerah asal Reog Ponorogo."
-},
-{
-q:"Seblang merupakan tradisi yang dikenal dari...",
-o:["Banyuwangi","Madiun","Tuban","Ngawi"],
-a:0,
-e:"Seblang merupakan tradisi masyarakat Osing di Banyuwangi."
-},
-{
-q:"Ludruk merupakan seni pertunjukan berupa...",
-o:["Drama tradisional","Tarian modern","Seni lukis","Musik elektronik"],
-a:0,
-e:"Ludruk merupakan seni drama tradisional Jawa Timur."
-},
-{
-q:"Bahasa Madura banyak digunakan di wilayah...",
-o:["Madura","Pacitan","Blitar","Nganjuk"],
-a:0,
-e:"Bahasa Madura digunakan oleh masyarakat Madura dan komunitas penuturnya."
-},
-{
-q:"Upacara Yadnya Kasada berkaitan dengan masyarakat...",
-o:["Tengger","Osing","Madura","Pandalungan"],
-a:0,
-e:"Yadnya Kasada merupakan upacara adat masyarakat Tengger."
-},
-{
-q:"Tari Gandrung terkenal berasal dari...",
-o:["Banyuwangi","Ponorogo","Mojokerto","Lamongan"],
-a:0,
-e:"Tari Gandrung merupakan kesenian khas Banyuwangi."
-},
-{
-q:"Suku Osing dikenal sebagai masyarakat asli dari...",
-o:["Banyuwangi","Surabaya","Madiun","Kediri"],
-a:0,
-e:"Masyarakat Osing merupakan kelompok masyarakat yang dikenal berasal dari Banyuwangi."
-},
-{
-q:"Alat musik tradisional yang dimainkan dengan cara dipukul adalah...",
-o:["Kendang","Suling","Sasando","Rebab"],
-a:0,
-e:"Kendang dimainkan dengan cara dipukul menggunakan tangan."
-},
-{
-q:"Jawa Timur merupakan salah satu provinsi di Pulau...",
-o:["Jawa","Sumatera","Kalimantan","Sulawesi"],
-a:0,
-e:"Jawa Timur terletak di bagian timur Pulau Jawa."
-},
-{
-q:"Kesenian Ludruk biasanya menggunakan bahasa...",
-o:["Jawa dialek setempat","Bahasa Sunda","Bahasa Minang","Bahasa Batak"],
-a:0,
-e:"Ludruk umumnya menggunakan bahasa Jawa dengan ragam dialek setempat."
-},
-{
-q:"Gunung Bromo berada di kawasan pegunungan...",
-o:["Tengger","Dieng","Merapi","Sewu"],
-a:0,
-e:"Gunung Bromo berada di kawasan Pegunungan Tengger."
-},
-{
-q:"Topeng Malangan merupakan kesenian yang berkembang di wilayah...",
-o:["Malang","Banyuwangi","Madura","Tuban"],
-a:0,
-e:"Topeng Malangan merupakan salah satu kesenian tradisional dari Malang."
-}
+{q:"Reog Ponorogo berasal dari daerah mana?",o:["Ponorogo","Surabaya","Blitar","Malang"],a:0,e:"Reog Ponorogo dikenal berasal dari Ponorogo."},
+{q:"Karapan Sapi merupakan tradisi dari...",o:["Banyuwangi","Madura","Kediri","Madiun"],a:1,e:"Karapan Sapi merupakan tradisi masyarakat Madura."},
+{q:"Tari Remo merupakan kesenian tradisional dari...",o:["Jawa Timur","Bali","Sumatera Barat","Kalimantan"],a:0,e:"Tari Remo merupakan salah satu tarian tradisional Jawa Timur."},
+{q:"Kota yang dikenal dengan kesenian Reog adalah...",o:["Blitar","Ponorogo","Jember","Pasuruan"],a:1,e:"Ponorogo dikenal sebagai daerah asal Reog Ponorogo."}
 ],
-
 medium:[
-{
-q:"Masyarakat Osing banyak dikenal berasal dari...",
-o:["Banyuwangi","Ngawi","Madiun","Tuban"],
-a:0,
-e:"Masyarakat Osing merupakan salah satu kelompok masyarakat di Banyuwangi."
-},
-{
-q:"Seblang dikenal sebagai tradisi masyarakat...",
-o:["Tengger","Osing","Madura","Jawa pesisir"],
-a:1,
-e:"Seblang dikenal sebagai tradisi masyarakat Osing di Banyuwangi."
-},
-{
-q:"Ludruk termasuk jenis seni...",
-o:["Drama tradisional","Kerajinan","Arsitektur","Pakaian"],
-a:0,
-e:"Ludruk merupakan seni pertunjukan drama tradisional Jawa Timur."
-},
-{
-q:"Bahasa Madura digunakan terutama oleh masyarakat...",
-o:["Madura","Ponorogo","Blitar","Pacitan"],
-a:0,
-e:"Bahasa Madura digunakan masyarakat Madura dan komunitasnya."
-},
-{
-q:"Tari Gandrung memiliki hubungan erat dengan budaya masyarakat...",
-o:["Osing","Tengger","Mataraman","Madura"],
-a:0,
-e:"Tari Gandrung merupakan salah satu identitas budaya masyarakat Osing."
-},
-{
-q:"Tanean Lanjhang merupakan pola permukiman tradisional masyarakat...",
-o:["Osing","Madura","Tengger","Jawa Mataraman"],
-a:1,
-e:"Tanean Lanjhang merupakan pola permukiman tradisional masyarakat Madura."
-},
-{
-q:"Upacara Kasada dilakukan oleh masyarakat...",
-o:["Osing","Tengger","Madura","Pandalungan"],
-a:1,
-e:"Upacara Kasada berkaitan dengan tradisi masyarakat Tengger."
-},
-{
-q:"Bahasa Osing menjadi salah satu identitas bahasa masyarakat...",
-o:["Banyuwangi","Ponorogo","Pacitan","Madiun"],
-a:0,
-e:"Bahasa Osing dikenal sebagai bahasa masyarakat Osing di Banyuwangi."
-},
-{
-q:"Reog Ponorogo dikenal memiliki properti utama berupa...",
-o:["Dadak merak","Perahu layar","Wayang golek","Angklung"],
-a:0,
-e:"Dadak merak merupakan properti yang paling dikenal dalam pertunjukan Reog Ponorogo."
-},
-{
-q:"Topeng Malangan sering digunakan dalam pertunjukan...",
-o:["Wayang topeng","Karapan sapi","Ludruk modern","Jaranan Madura"],
-a:0,
-e:"Topeng Malangan merupakan bagian dari seni pertunjukan wayang topeng."
-},
-{
-q:"Karapan Sapi berkaitan dengan kegiatan...",
-o:["Perlombaan sapi","Perlombaan kuda","Balap perahu","Lomba kerbau"],
-a:0,
-e:"Karapan Sapi merupakan tradisi perlombaan sapi yang dikenal di Madura."
-},
-{
-q:"Masyarakat Tengger banyak tinggal di sekitar kawasan...",
-o:["Gunung Bromo","Gunung Merapi","Gunung Rinjani","Gunung Kerinci"],
-a:0,
-e:"Masyarakat Tengger dikenal tinggal di kawasan sekitar Pegunungan Bromo-Tengger."
-},
-{
-q:"Tari Remo secara tradisional dikenal sebagai tarian penyambutan dan berkaitan dengan seni...",
-o:["Pertunjukan Jawa Timur","Pencak silat Melayu","Tari Bali klasik","Tari perang Papua"],
-a:0,
-e:"Tari Remo dikenal sebagai tarian penyambutan dalam tradisi pertunjukan Jawa Timur."
-},
-{
-q:"Jaranan merupakan kesenian pertunjukan yang menggunakan properti...",
-o:["Kuda tiruan","Perahu kayu","Topeng singa","Boneka tangan"],
-a:0,
-e:"Jaranan menggunakan properti berbentuk kuda tiruan."
-},
-{
-q:"Salah satu ciri pertunjukan Ludruk adalah adanya...",
-o:["Dialog dan cerita kehidupan sehari-hari","Gerakan tanpa dialog","Pertunjukan boneka air","Lagu opera Barat"],
-a:0,
-e:"Ludruk dikenal melalui dialog, humor, dan cerita kehidupan masyarakat."
-}
+{q:"Masyarakat Osing banyak dikenal berasal dari...",o:["Banyuwangi","Ngawi","Madiun","Tuban"],a:0,e:"Masyarakat Osing merupakan salah satu kelompok masyarakat di Banyuwangi."},
+{q:"Seblang dikenal sebagai tradisi masyarakat...",o:["Tengger","Osing","Madura","Jawa pesisir"],a:1,e:"Seblang dikenal sebagai tradisi masyarakat Osing di Banyuwangi."},
+{q:"Ludruk termasuk jenis seni...",o:["Drama tradisional","Kerajinan","Arsitektur","Pakaian"],a:0,e:"Ludruk merupakan seni pertunjukan drama tradisional Jawa Timur."},
+{q:"Bahasa Madura digunakan terutama oleh masyarakat...",o:["Madura","Ponorogo","Blitar","Pacitan"],a:0,e:"Bahasa Madura digunakan masyarakat Madura dan komunitasnya."}
 ],
-
 hard:[
-{
-q:"Tanean Lanjhang merupakan pola permukiman tradisional masyarakat...",
-o:["Osing","Madura","Tengger","Jawa Mataraman"],
-a:1,
-e:"Tanean Lanjhang merupakan pola permukiman tradisional masyarakat Madura."
-},
-{
-q:"Upacara Kasada berkaitan dengan masyarakat...",
-o:["Osing","Tengger","Madura","Pandalungan"],
-a:1,
-e:"Upacara Kasada berkaitan dengan tradisi masyarakat Tengger di kawasan Bromo."
-},
-{
-q:"Bahasa Osing menjadi salah satu identitas bahasa masyarakat...",
-o:["Banyuwangi","Ponorogo","Pacitan","Madiun"],
-a:0,
-e:"Bahasa Osing dikenal sebagai bahasa masyarakat Osing di Banyuwangi."
-},
-{
-q:"Reog Ponorogo dikenal memiliki properti pertunjukan utama berupa...",
-o:["Dadak merak","Perahu layar","Wayang golek","Angklung"],
-a:0,
-e:"Dadak merak merupakan salah satu properti yang paling dikenal dalam pertunjukan Reog Ponorogo."
-},
-{
-q:"Yadnya Kasada merupakan upacara adat yang berkaitan dengan kepercayaan masyarakat...",
-o:["Tengger","Osing","Madura","Pandalungan"],
-a:0,
-e:"Yadnya Kasada merupakan tradisi keagamaan masyarakat Tengger yang berkaitan dengan penghormatan kepada Sang Hyang Widhi dan leluhur."
-},
-{
-q:"Pola permukiman Tanean Lanjhang memiliki ciri utama berupa...",
-o:["Kelompok rumah dalam satu halaman memanjang","Rumah panggung di atas air","Rumah berbentuk kerucut","Rumah bertingkat di tepi sungai"],
-a:0,
-e:"Tanean Lanjhang memiliki susunan rumah yang menghadap halaman atau pekarangan bersama."
-},
-{
-q:"Kesenian Topeng Malangan memiliki hubungan kuat dengan cerita...",
-o:["Panji","Mahabharata versi Bali","Legenda Danau Toba","Cerita Ramayana Thailand"],
-a:0,
-e:"Topeng Malangan memiliki hubungan erat dengan tradisi cerita Panji."
-},
-{
-q:"Seblang Olehsari merupakan tradisi yang dikenal di wilayah...",
-o:["Banyuwangi","Ponorogo","Tulungagung","Probolinggo"],
-a:0,
-e:"Seblang Olehsari merupakan tradisi masyarakat Osing di Desa Olehsari, Banyuwangi."
-},
-{
-q:"Kawasan budaya Tengger berkaitan erat dengan lingkungan...",
-o:["Pegunungan Bromo-Tengger","Pantai Selatan","Dataran rendah Bengawan Solo","Pegunungan Ijen bagian barat"],
-a:0,
-e:"Masyarakat Tengger memiliki hubungan budaya yang erat dengan kawasan Pegunungan Bromo-Tengger."
-},
-{
-q:"Dalam pertunjukan Reog Ponorogo, tokoh yang menggunakan dadak merak dikenal sebagai...",
-o:["Singa Barong","Warok","Jathil","Bujang Ganong"],
-a:0,
-e:"Singa Barong merupakan tokoh utama yang ditampilkan melalui properti dadak merak."
-},
-{
-q:"Jathil dalam pertunjukan Reog Ponorogo dikenal sebagai...",
-o:["Penari berkuda","Pemain gamelan utama","Penyanyi pembuka","Pembawa topeng Barong"],
-a:0,
-e:"Jathil merupakan penari yang tampil dengan properti kuda kepang."
-},
-{
-q:"Tradisi Karapan Sapi secara historis berkaitan dengan kehidupan masyarakat Madura yang banyak bergerak di bidang...",
-o:["Pertanian dan peternakan","Pertambangan batu bara","Perkebunan teh","Perikanan laut dalam"],
-a:0,
-e:"Karapan Sapi memiliki hubungan dengan kehidupan agraris masyarakat Madura."
-},
-{
-q:"Tari Gandrung Banyuwangi secara historis berkaitan dengan ungkapan rasa...",
-o:["Syukur dan kebersamaan","Duka peperangan","Pelepasan pelaut","Penyambutan musim salju"],
-a:0,
-e:"Tari Gandrung berkembang sebagai ungkapan rasa syukur dan kebersamaan dalam kehidupan masyarakat Banyuwangi."
-},
-{
-q:"Salah satu fungsi sosial pertunjukan Ludruk dalam masyarakat adalah...",
-o:["Menyampaikan kritik sosial melalui hiburan","Menentukan batas wilayah kerajaan","Mengatur sistem perdagangan laut","Menjadi upacara panen padi saja"],
-a:0,
-e:"Ludruk sering menyampaikan kritik sosial dan persoalan kehidupan masyarakat melalui pertunjukan."
-},
-{
-q:"Cerita Panji merupakan warisan sastra dan budaya yang banyak memengaruhi seni pertunjukan di wilayah...",
-o:["Jawa Timur","Papua Barat","Kepulauan Maluku","Nusa Tenggara Timur"],
-a:0,
-e:"Cerita Panji berkembang kuat dalam tradisi sastra dan seni pertunjukan di Jawa Timur."
-}
-
+{q:"Tanean Lanjhang merupakan pola permukiman tradisional masyarakat...",o:["Osing","Madura","Tengger","Jawa Mataraman"],a:1,e:"Tanean Lanjhang merupakan pola permukiman tradisional masyarakat Madura."},
+{q:"Upacara Kasada berkaitan dengan masyarakat...",o:["Osing","Tengger","Madura","Pandalungan"],a:1,e:"Upacara Kasada berkaitan dengan tradisi masyarakat Tengger di kawasan Bromo."},
+{q:"Bahasa Osing menjadi salah satu identitas bahasa masyarakat...",o:["Banyuwangi","Ponorogo","Pacitan","Madiun"],a:0,e:"Bahasa Osing dikenal sebagai bahasa masyarakat Osing di Banyuwangi."},
+{q:"Reog Ponorogo dikenal memiliki properti pertunjukan utama berupa...",o:["Dadak merak","Perahu layar","Wayang golek","Angklung"],a:0,e:"Dadak merak merupakan salah satu properti yang paling dikenal dalam pertunjukan Reog Ponorogo."}
 ]
-
 };
+
+let level="",questions=[],index=0,points=0,locked=false;
+
+function start(l){
+ level=l;
+ questions=data[l];
+ index=0;
+ points=0;
+ document.getElementById("choose").classList.add("hidden");
+ document.getElementById("result").classList.add("hidden");
+ document.getElementById("game").classList.remove("hidden");
+ showQuestion();
+}
+function showQuestion(){
+ locked=false;
+ let q=questions[index];
+ document.getElementById("progressText").textContent=
+ "LEVEL "+level.toUpperCase()+" · QUESTION "+(index+1)+" OF "+questions.length;
+ document.getElementById("bar").style.width=
+ (index/questions.length*100)+"%";
+ document.getElementById("question").textContent=q.q;
+ document.getElementById("feedback").classList.add("hidden");
+ document.getElementById("next").classList.add("hidden");
+ document.getElementById("options").innerHTML=q.o.map((o,i)=>
+ `<button class="option" onclick="answer(${i},this)">${o}</button>`
+ ).join("");
+}
+function answer(choice,button){
+ if(locked)return;
+ locked=true;
+ let q=questions[index];
+ document.querySelectorAll(".option").forEach((b,i)=>{
+ b.disabled=true;
+ if(i===q.a)b.classList.add("correct");
+ });
+ if(choice===q.a){points++;button.classList.add("correct")}
+ else{button.classList.add("wrong")}
+ let f=document.getElementById("feedback");
+ f.textContent=(choice===q.a?"Benar! ":"Belum tepat. ")+q.e;
+ f.classList.remove("hidden");
+ document.getElementById("next").classList.remove("hidden");
+ document.getElementById("next").textContent=
+ index===questions.length-1?"LIHAT HASIL":"SELANJUTNYA →";
+}
+function nextQuestion(){
+ if(index<questions.length-1){index++;showQuestion()}
+ else finish();
+}
+function finish(){
+ document.getElementById("game").classList.add("hidden");
+ let r=document.getElementById("result");
+ r.classList.remove("hidden");
+ document.getElementById("bar").style.width="100%";
+ document.getElementById("score").innerHTML=
+ "Level: <b>"+level.toUpperCase()+"</b><br>Skor kamu: <b>"+points+" / "+questions.length+"</b><br>"+
+ (points===questions.length?"Luar biasa! Semua jawaban benar.":"Terus belajar dan coba lagi untuk meningkatkan skormu!");
+ try{
+ let old=JSON.parse(localStorage.getItem("eastJavaQuiz")||"[]");
+ old.push({level:level,score:points,total:questions.length,date:new Date().toLocaleDateString("id-ID")});
+ localStorage.setItem("eastJavaQuiz",JSON.stringify(old));
+ }catch(e){}
+}
+function restart(){start(level)}
+function home(){
+ document.getElementById("result").classList.add("hidden");
+ document.getElementById("choose").classList.remove("hidden");
+}
+</script>
+</body>
+</html>
