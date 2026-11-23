@@ -1,298 +1,358 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EastJava — Culture Quiz</title>
+<title>EastJava | Culture Quiz</title>
 
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 :root {
-  --green: #183F35;
-  --ivory: #F4EBDD;
-  --terracotta: #B96F4A;
-  --gold: #D5B887;
-  --ink: #292E29;
+  --green: #183f35;
+  --ivory: #f4ebdd;
+  --terracotta: #b96f4a;
+  --gold: #d5b887;
+  --ink: #292e29;
   --white: #fffdf8;
 }
-* { box-sizing: border-box; }
+
 body {
-  margin: 0;
   background: var(--ivory);
   color: var(--ink);
   font-family: 'DM Sans', sans-serif;
 }
+
 header {
   background: var(--green);
-  color: var(--ivory);
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  padding: 18px 7%;
 }
-.navbar {
-  max-width: 1150px;
+
+.nav {
+  max-width: 1100px;
   margin: auto;
-  padding: 17px 6%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
 }
+
 .logo {
+  color: var(--ivory);
   font-family: 'Playfair Display', serif;
   font-size: 27px;
-  font-weight: 700;
-  color: var(--ivory);
+  font-weight: bold;
   text-decoration: none;
 }
-.logo span { color: var(--gold); }
+
+.logo span {
+  color: var(--gold);
+}
+
 nav {
   display: flex;
-  gap: 23px;
+  gap: 22px;
 }
+
 nav a {
   color: var(--ivory);
-  font-size: 13px;
   text-decoration: none;
+  font-size: 13px;
 }
-nav a:hover { color: var(--gold); }
+
+nav a:hover {
+  color: var(--gold);
+}
 
 .hero {
   background: var(--green);
   color: var(--ivory);
-  padding: 65px 7% 80px;
   text-align: center;
+  padding: 65px 20px 90px;
 }
+
 .eyebrow {
   color: var(--gold);
-  text-transform: uppercase;
   font-size: 11px;
   letter-spacing: 3px;
-  font-weight: 700;
+  font-weight: bold;
+  text-transform: uppercase;
 }
+
 .hero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(38px, 6vw, 62px);
-  margin: 15px 0;
+  font-size: clamp(38px, 6vw, 60px);
+  margin: 18px 0;
 }
+
 .hero p {
-  color: #e1ded3;
-  max-width: 600px;
+  max-width: 570px;
   margin: auto;
   line-height: 1.8;
+  color: #e8e2d6;
 }
+
 main {
-  max-width: 950px;
-  margin: -30px auto 70px;
+  max-width: 850px;
+  margin: -35px auto 70px;
   padding: 0 18px;
 }
-.panel {
+
+.card {
   background: var(--white);
-  padding: 30px;
+  border: 1px solid #e6ddcf;
   border-radius: 10px;
-  border: 1px solid #e8ddcc;
+  padding: 32px;
   box-shadow: 0 12px 35px #183f3510;
 }
-.level-title {
+
+h2 {
   font-family: 'Playfair Display', serif;
-  font-size: 28px;
   color: var(--green);
-  margin: 0 0 8px;
+  font-size: 29px;
+  margin: 10px 0;
 }
-.muted {
+
+.description {
   color: #77746b;
   font-size: 14px;
-  line-height: 1.7;
+  line-height: 1.8;
 }
+
 .levels {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
-  margin: 25px 0;
+  gap: 13px;
+  margin: 27px 0;
 }
+
 .level {
   border: 1px solid #ded4c3;
   background: var(--ivory);
+  padding: 22px 10px;
   border-radius: 7px;
-  padding: 20px 10px;
-  text-align: center;
   cursor: pointer;
-  transition: .2s;
+  color: var(--ink);
 }
-.level:hover, .level.active {
-  background: var(--green);
-  color: var(--ivory);
-  border-color: var(--green);
-  transform: translateY(-3px);
-}
+
 .level strong {
   display: block;
   font-family: 'Playfair Display', serif;
   font-size: 21px;
-  margin-bottom: 6px;
+  margin-bottom: 7px;
 }
-.level small { font-size: 11px; }
-.primary {
-  border: 0;
+
+.level small {
+  font-size: 11px;
+}
+
+.level.active,
+.level:hover {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+
+.btn {
+  border: none;
   background: var(--terracotta);
   color: white;
+  padding: 13px 22px;
   border-radius: 5px;
-  padding: 13px 20px;
-  font-weight: 700;
   cursor: pointer;
-  transition: .2s;
+  font-weight: bold;
+  font-family: inherit;
 }
-.primary:hover { filter: brightness(1.08); }
-.secondary {
-  border: 1px solid var(--green);
+
+.btn:hover {
+  opacity: .9;
+}
+
+.outline {
   background: transparent;
   color: var(--green);
-  border-radius: 5px;
-  padding: 12px 18px;
-  font-weight: 700;
-  cursor: pointer;
+  border: 1px solid var(--green);
 }
-.hidden { display: none !important; }
-.quiz-top {
+
+.hidden {
+  display: none !important;
+}
+
+.quiz-info {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--green);
 }
-.progress-track {
-  height: 8px;
+
+.progress {
   width: 100%;
+  height: 8px;
   background: #e9e1d4;
   border-radius: 20px;
   overflow: hidden;
-  margin: 15px 0 25px;
+  margin: 18px 0 28px;
 }
-.progress-fill {
+
+.progress-bar {
   height: 100%;
   width: 0;
   background: var(--terracotta);
-  transition: width .3s;
+  transition: .3s;
 }
+
 .question-number {
   color: var(--terracotta);
-  font-weight: 700;
   font-size: 12px;
+  font-weight: bold;
   letter-spacing: 1px;
 }
+
 .question {
   font-family: 'Playfair Display', serif;
-  font-size: 27px;
-  line-height: 1.4;
+  font-size: 25px;
   color: var(--green);
-  margin: 12px 0 25px;
+  line-height: 1.5;
+  margin: 15px 0 25px;
 }
-.answers {
+
+.options {
   display: grid;
   gap: 12px;
 }
-.answer {
-  width: 100%;
-  text-align: left;
-  background: var(--ivory);
-  border: 1px solid #e1d7c7;
-  border-radius: 6px;
+
+.option {
   padding: 15px;
-  cursor: pointer;
+  border: 1px solid #e1d7c7;
+  background: var(--ivory);
   color: var(--ink);
-  transition: .2s;
+  border-radius: 6px;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
 }
-.answer:hover:not(:disabled) {
+
+.option:hover:not(:disabled) {
   border-color: var(--green);
-  background: #eee5d5;
 }
-.answer:disabled { cursor: default; }
-.answer.correct {
+
+.option:disabled {
+  cursor: default;
+}
+
+.option.correct {
   background: #e0eee2;
   border-color: #52865b;
-  color: #24542d;
 }
-.answer.wrong {
+
+.option.wrong {
   background: #f7e3dc;
   border-color: var(--terracotta);
-  color: #8d432b;
 }
+
 .feedback {
   margin-top: 18px;
   padding: 16px;
   border-radius: 6px;
-  line-height: 1.7;
   font-size: 14px;
+  line-height: 1.7;
 }
+
 .feedback.good {
   background: #e0eee2;
   color: #24542d;
 }
+
 .feedback.bad {
   background: #f7e3dc;
   color: #8d432b;
 }
-.quiz-actions {
+
+.actions {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-top: 22px;
   gap: 12px;
+  margin-top: 24px;
 }
+
 .result {
   text-align: center;
   padding: 20px 0;
 }
-.score-circle {
+
+.score {
   width: 145px;
   height: 145px;
-  border: 7px solid var(--gold);
-  background: var(--green);
-  color: var(--ivory);
   border-radius: 50%;
+  background: var(--green);
+  border: 7px solid var(--gold);
+  color: white;
   display: grid;
   place-items: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 37px;
   margin: 25px auto;
-  font-family: 'Playfair Display', serif;
-  font-size: 36px;
 }
-.result h2 {
-  color: var(--green);
-  font-family: 'Playfair Display', serif;
-  font-size: 34px;
-}
+
 .history {
-  margin-top: 25px;
-  padding-top: 20px;
+  margin-top: 35px;
   border-top: 1px solid #e6ddcf;
+  padding-top: 23px;
 }
-.history-item {
+
+.history-row {
   display: flex;
   justify-content: space-between;
+  gap: 12px;
   padding: 12px 0;
   border-bottom: 1px solid #eee6da;
   font-size: 13px;
-  gap: 10px;
 }
+
 footer {
   background: #102e28;
   color: var(--ivory);
-  padding: 35px 7%;
   text-align: center;
+  padding: 35px 20px;
+  line-height: 1.9;
   font-size: 13px;
-  line-height: 1.8;
 }
-footer span { color: var(--gold); }
+
+footer span {
+  color: var(--gold);
+}
 
 @media(max-width: 600px) {
-  .navbar { flex-direction: column; }
-  nav { gap: 15px; flex-wrap: wrap; justify-content: center; }
-  .levels { grid-template-columns: 1fr; }
-  .panel { padding: 21px; }
-  .question { font-size: 23px; }
-  .hero { padding: 55px 6% 75px; }
+  .nav {
+    flex-direction: column;
+  }
+
+  nav {
+    gap: 16px;
+  }
+
+  .levels {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 22px;
+  }
+
+  .question {
+    font-size: 22px;
+  }
 }
 </style>
 </head>
@@ -300,8 +360,9 @@ footer span { color: var(--gold); }
 <body>
 
 <header>
-  <div class="navbar">
+  <div class="nav">
     <a href="index.html" class="logo">East<span>Java.</span></a>
+
     <nav>
       <a href="index.html">Home</a>
       <a href="explore.html">Explore</a>
@@ -314,75 +375,81 @@ footer span { color: var(--gold); }
   <div class="eyebrow">Learn · Play · Discover</div>
   <h1>Culture Challenge</h1>
   <p>
-    Seberapa jauh kamu mengenal budaya Jawa Timur?
-    Uji pengetahuanmu melalui tantangan kuis dengan tiga tingkat kesulitan.
+    Explore the richness of East Java through an exciting cultural quiz.
+    Test your knowledge and discover something new!
   </p>
 </section>
 
 <main>
-  <div class="panel">
+  <div class="card">
 
-    <div id="levelScreen">
+    <section id="menu">
       <div class="eyebrow">Choose your challenge</div>
-      <h2 class="level-title">Pilih Tingkat Kesulitan</h2>
-      <p class="muted">Setiap level memiliki 10 pertanyaan tentang budaya Jawa Timur.</p>
+      <h2>Pilih Tingkat Kesulitan</h2>
+      <p class="description">
+        Terdapat tiga tingkat tantangan dengan masing-masing 10 pertanyaan.
+      </p>
 
       <div class="levels">
         <button class="level active" data-level="easy">
           <strong>Easy</strong>
           <small>Pemula · 10 soal</small>
         </button>
+
         <button class="level" data-level="medium">
           <strong>Medium</strong>
           <small>Menengah · 10 soal</small>
         </button>
+
         <button class="level" data-level="hard">
           <strong>Hard</strong>
           <small>Menantang · 10 soal</small>
         </button>
       </div>
 
-      <button class="primary" id="startBtn">Mulai Tantangan →</button>
+      <button class="btn" id="start">Mulai Tantangan →</button>
 
       <div class="history">
-        <h3 class="level-title">Riwayat Skor</h3>
-        <div id="historyList"></div>
+        <h2>Riwayat Skor</h2>
+        <div id="historyList" class="description"></div>
       </div>
-    </div>
+    </section>
 
-    <div id="quizScreen" class="hidden">
-      <div class="quiz-top">
-        <span class="eyebrow" id="levelLabel">EASY LEVEL</span>
-        <strong id="scoreLabel">Skor: 0</strong>
-      </div>
-
-      <div class="progress-track">
-        <div class="progress-fill" id="progressFill"></div>
+    <section id="game" class="hidden">
+      <div class="quiz-info">
+        <span id="levelName">EASY LEVEL</span>
+        <span id="scoreText">Skor: 0</span>
       </div>
 
-      <div class="question-number" id="questionNumber">QUESTION 1 / 10</div>
-      <div class="question" id="questionText"></div>
-      <div class="answers" id="answerOptions"></div>
+      <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <div class="question-number" id="number"></div>
+      <div class="question" id="question"></div>
+
+      <div class="options" id="options"></div>
 
       <div id="feedback" class="feedback hidden"></div>
 
-      <div class="quiz-actions">
-        <button class="secondary" id="exitBtn">Keluar</button>
-        <button class="primary hidden" id="nextBtn">Soal Berikutnya →</button>
+      <div class="actions">
+        <button class="btn outline" id="exit">Keluar</button>
+        <button class="btn hidden" id="next">Soal Berikutnya →</button>
       </div>
-    </div>
+    </section>
 
-    <div id="resultScreen" class="hidden">
+    <section id="result" class="hidden">
       <div class="result">
         <div class="eyebrow">Challenge completed</div>
         <h2 id="resultTitle">Well Done!</h2>
-        <div class="score-circle" id="finalScore">0</div>
-        <p id="resultMessage" class="muted"></p>
-        <p id="resultDetail"></p>
-        <button class="primary" id="retryBtn">Ulangi Kuis</button>
-        <button class="secondary" id="homeBtn">Pilih Level Lain</button>
+        <div class="score" id="finalScore">0</div>
+        <p class="description" id="resultMessage"></p>
+        <p id="resultDetail" style="margin:18px 0"></p>
+
+        <button class="btn" id="retry">Ulangi Kuis</button>
+        <button class="btn outline" id="back">Pilih Level Lain</button>
       </div>
-    </div>
+    </section>
 
   </div>
 </main>
@@ -394,295 +461,154 @@ footer span { color: var(--gold); }
 </footer>
 
 <script>
-const questions = {
+const data = {
   easy: [
-    {
-      q: "Reog Ponorogo berasal dari daerah mana?",
-      o: ["Ponorogo", "Surabaya", "Blitar", "Malang"],
-      a: 0,
-      e: "Reog Ponorogo merupakan kesenian tradisional yang berasal dari Ponorogo."
-    },
-    {
-      q: "Karapan Sapi merupakan tradisi dari...",
-      o: ["Banyuwangi", "Madura", "Kediri", "Madiun"],
-      a: 1,
-      e: "Karapan Sapi merupakan tradisi perlombaan sapi yang dikenal dari Madura."
-    },
-    {
-      q: "Tari Remo merupakan kesenian tradisional dari...",
-      o: ["Bali", "Sumatera Barat", "Kalimantan", "Jawa Timur"],
-      a: 3,
-      e: "Tari Remo merupakan salah satu tarian tradisional Jawa Timur."
-    },
-    {
-      q: "Kota yang dikenal dengan kesenian Reog adalah...",
-      o: ["Blitar", "Ponorogo", "Jember", "Pasuruan"],
-      a: 1,
-      e: "Ponorogo dikenal sebagai daerah asal Reog Ponorogo."
-    },
-    {
-      q: "Seblang merupakan tradisi yang dikenal dari...",
-      o: ["Banyuwangi", "Madiun", "Tuban", "Ngawi"],
-      a: 0,
-      e: "Seblang merupakan salah satu tradisi masyarakat Osing di Banyuwangi."
-    },
-    {
-      q: "Ludruk merupakan seni pertunjukan berupa...",
-      o: ["Drama tradisional", "Seni lukis", "Musik elektronik", "Tari modern"],
-      a: 0,
-      e: "Ludruk merupakan seni pertunjukan drama tradisional Jawa Timur."
-    },
-    {
-      q: "Bahasa Madura banyak digunakan di wilayah...",
-      o: ["Jawa Barat", "Bali", "Madura", "Kalimantan"],
-      a: 2,
-      e: "Bahasa Madura digunakan oleh masyarakat Madura dan komunitas penuturnya."
-    },
-    {
-      q: "Upacara Yadnya Kasada berkaitan dengan masyarakat...",
-      o: ["Tengger", "Osing", "Madura", "Pandalungan"],
-      a: 0,
-      e: "Yadnya Kasada merupakan upacara adat masyarakat Tengger."
-    },
-    {
-      q: "Tari Gandrung terkenal berasal dari...",
-      o: ["Banyuwangi", "Ponorogo", "Mojokerto", "Lamongan"],
-      a: 0,
-      e: "Tari Gandrung merupakan salah satu kesenian khas Banyuwangi."
-    },
-    {
-      q: "Suku Osing dikenal sebagai masyarakat asli dari...",
-      o: ["Banyuwangi", "Surabaya", "Madiun", "Kediri"],
-      a: 0,
-      e: "Masyarakat Osing merupakan kelompok masyarakat yang dikenal berasal dari Banyuwangi."
-    }
+    {q:"Reog Ponorogo berasal dari daerah mana?",o:["Ponorogo","Surabaya","Blitar","Malang"],a:0,e:"Reog Ponorogo merupakan kesenian tradisional dari Ponorogo."},
+    {q:"Karapan Sapi merupakan tradisi dari...",o:["Banyuwangi","Madura","Kediri","Madiun"],a:1,e:"Karapan Sapi merupakan tradisi perlombaan sapi yang dikenal dari Madura."},
+    {q:"Tari Remo merupakan kesenian tradisional dari...",o:["Bali","Sumatera Barat","Kalimantan","Jawa Timur"],a:3,e:"Tari Remo merupakan salah satu tarian tradisional Jawa Timur."},
+    {q:"Kota yang dikenal dengan kesenian Reog adalah...",o:["Blitar","Ponorogo","Jember","Pasuruan"],a:1,e:"Ponorogo dikenal sebagai daerah asal Reog Ponorogo."},
+    {q:"Seblang merupakan tradisi yang dikenal dari...",o:["Banyuwangi","Madiun","Tuban","Ngawi"],a:0,e:"Seblang merupakan tradisi masyarakat Osing di Banyuwangi."},
+    {q:"Ludruk merupakan seni pertunjukan berupa...",o:["Drama tradisional","Seni lukis","Musik elektronik","Tari modern"],a:0,e:"Ludruk merupakan seni pertunjukan drama tradisional Jawa Timur."},
+    {q:"Bahasa Madura banyak digunakan di wilayah...",o:["Jawa Barat","Bali","Madura","Kalimantan"],a:2,e:"Bahasa Madura digunakan oleh masyarakat Madura dan komunitas penuturnya."},
+    {q:"Upacara Yadnya Kasada berkaitan dengan masyarakat...",o:["Tengger","Osing","Madura","Pandalungan"],a:0,e:"Yadnya Kasada merupakan upacara adat masyarakat Tengger."},
+    {q:"Tari Gandrung terkenal berasal dari...",o:["Banyuwangi","Ponorogo","Mojokerto","Lamongan"],a:0,e:"Tari Gandrung merupakan kesenian khas Banyuwangi."},
+    {q:"Suku Osing dikenal sebagai masyarakat yang berasal dari...",o:["Banyuwangi","Surabaya","Madiun","Kediri"],a:0,e:"Masyarakat Osing dikenal berasal dari Banyuwangi."}
   ],
 
   medium: [
-    {
-      q: "Alat musik tradisional yang dimainkan dengan cara dipukul adalah...",
-      o: ["Kendang", "Suling", "Sasando", "Rebab"],
-      a: 0,
-      e: "Kendang dimainkan dengan cara dipukul menggunakan tangan."
-    },
-    {
-      q: "Jawa Timur merupakan salah satu provinsi di Pulau...",
-      o: ["Jawa", "Sumatera", "Kalimantan", "Sulawesi"],
-      a: 0,
-      e: "Jawa Timur terletak di bagian timur Pulau Jawa."
-    },
-    {
-      q: "Kesenian Ludruk biasanya menggunakan bahasa...",
-      o: ["Jawa dialek setempat", "Bahasa Sunda", "Bahasa Minang", "Bahasa Batak"],
-      a: 0,
-      e: "Ludruk umumnya menggunakan bahasa Jawa dengan ragam dialek setempat."
-    },
-    {
-      q: "Gunung Bromo berada di kawasan pegunungan...",
-      o: ["Tengger", "Dieng", "Merapi", "Sewu"],
-      a: 0,
-      e: "Gunung Bromo berada di kawasan Pegunungan Tengger."
-    },
-    {
-      q: "Topeng Malangan merupakan kesenian yang berkembang di wilayah...",
-      o: ["Malang", "Banyuwangi", "Madura", "Tuban"],
-      a: 0,
-      e: "Topeng Malangan merupakan salah satu kesenian tradisional dari Malang."
-    },
-    {
-      q: "Masyarakat Osing banyak dikenal berasal dari...",
-      o: ["Banyuwangi", "Ngawi", "Madiun", "Tuban"],
-      a: 0,
-      e: "Masyarakat Osing merupakan salah satu kelompok masyarakat di Banyuwangi."
-    },
-    {
-      q: "Seblang dikenal sebagai tradisi masyarakat...",
-      o: ["Tengger", "Osing", "Madura", "Tuban"],
-      a: 1,
-      e: "Seblang dikenal sebagai tradisi masyarakat Osing di Banyuwangi."
-    },
-    {
-      q: "Ludruk termasuk jenis seni...",
-      o: ["Drama tradisional", "Kerajinan", "Arsitektur", "Pakaian"],
-      a: 0,
-      e: "Ludruk merupakan seni pertunjukan drama tradisional Jawa Timur."
-    },
-    {
-      q: "Bahasa Madura digunakan terutama oleh masyarakat...",
-      o: ["Madura", "Ponorogo", "Blitar", "Pacitan"],
-      a: 0,
-      e: "Bahasa Madura digunakan oleh masyarakat Madura dan komunitas penuturnya."
-    },
-    {
-      q: "Tari Gandrung memiliki hubungan erat dengan budaya masyarakat...",
-      o: ["Osing", "Tengger", "Mataraman", "Madura"],
-      a: 0,
-      e: "Tari Gandrung merupakan salah satu identitas budaya masyarakat Osing."
-    }
+    {q:"Alat musik tradisional yang dimainkan dengan cara dipukul adalah...",o:["Kendang","Suling","Sasando","Rebab"],a:0,e:"Kendang dimainkan dengan cara dipukul menggunakan tangan."},
+    {q:"Jawa Timur terletak di bagian timur Pulau...",o:["Jawa","Sumatera","Kalimantan","Sulawesi"],a:0,e:"Jawa Timur berada di bagian timur Pulau Jawa."},
+    {q:"Ludruk umumnya menggunakan bahasa...",o:["Jawa dengan dialek setempat","Sunda","Minang","Batak"],a:0,e:"Ludruk menggunakan bahasa Jawa dengan ragam dialek setempat."},
+    {q:"Gunung Bromo berada di kawasan pegunungan...",o:["Tengger","Dieng","Merapi","Sewu"],a:0,e:"Gunung Bromo berada di kawasan Pegunungan Tengger."},
+    {q:"Topeng Malangan merupakan kesenian tradisional dari...",o:["Malang","Banyuwangi","Madura","Tuban"],a:0,e:"Topeng Malangan merupakan kesenian tradisional dari Malang."},
+    {q:"Masyarakat Osing dikenal berasal dari...",o:["Banyuwangi","Ngawi","Madiun","Tuban"],a:0,e:"Masyarakat Osing merupakan kelompok masyarakat yang dikenal di Banyuwangi."},
+    {q:"Seblang dikenal sebagai tradisi masyarakat...",o:["Tengger","Osing","Madura","Tuban"],a:1,e:"Seblang dikenal sebagai tradisi masyarakat Osing di Banyuwangi."},
+    {q:"Ludruk termasuk jenis seni...",o:["Drama tradisional","Kerajinan","Arsitektur","Pakaian"],a:0,e:"Ludruk merupakan seni pertunjukan drama tradisional."},
+    {q:"Tanean Lanjhang merupakan pola permukiman tradisional masyarakat...",o:["Osing","Madura","Tengger","Betawi"],a:1,e:"Tanean Lanjhang merupakan pola permukiman tradisional masyarakat Madura."},
+    {q:"Tari Gandrung berkaitan erat dengan budaya masyarakat...",o:["Osing","Tengger","Mataraman","Madura"],a:0,e:"Tari Gandrung merupakan salah satu identitas budaya masyarakat Osing."}
   ],
 
   hard: [
-    {
-      q: "Tanean Lanjhang merupakan pola permukiman tradisional masyarakat...",
-      o: ["Osing", "Madura", "Tengger", "Jawa Mataraman"],
-      a: 1,
-      e: "Tanean Lanjhang merupakan pola permukiman tradisional Madura."
-    },
-    {
-      q: "Upacara Kasada dilakukan oleh masyarakat...",
-      o: ["Osing", "Tengger", "Madura", "Pandalungan"],
-      a: 1,
-      e: "Upacara Kasada berkaitan dengan tradisi masyarakat Tengger."
-    },
-    {
-      q: "Bahasa Osing menjadi salah satu identitas bahasa masyarakat...",
-      o: ["Banyuwangi", "Ponorogo", "Pacitan", "Madiun"],
-      a: 0,
-      e: "Bahasa Osing dikenal sebagai bahasa masyarakat Osing di Banyuwangi."
-    },
-    {
-      q: "Reog Ponorogo dikenal memiliki properti utama berupa...",
-      o: ["Dadak merak", "Perahu layar", "Wayang golek", "Angklung"],
-      a: 0,
-      e: "Dadak merak merupakan properti yang paling dikenal dalam pertunjukan Reog Ponorogo."
-    },
-    {
-      q: "Topeng Malangan sering digunakan dalam pertunjukan...",
-      o: ["Wayang topeng", "Karapan sapi", "Ludruk modern", "Jaranan Madura"],
-      a: 0,
-      e: "Topeng Malangan merupakan bagian dari seni pertunjukan wayang topeng."
-    },
-    {
-      q: "Karapan Sapi berkaitan dengan kegiatan...",
-      o: ["Perlombaan sapi", "Perlombaan kuda", "Balap perahu", "Lomba kerbau"],
-      a: 0,
-      e: "Karapan Sapi merupakan tradisi perlombaan sapi yang dikenal di Madura."
-    },
-    {
-      q: "Masyarakat Tengger banyak tinggal di sekitar kawasan...",
-      o: ["Gunung Bromo", "Gunung Merapi", "Gunung Rinjani", "Gunung Kerinci"],
-      a: 0,
-      e: "Masyarakat Tengger dikenal tinggal di kawasan sekitar Pegunungan Bromo-Tengger."
-    },
-    {
-      q: "Tari Remo secara tradisional dikenal sebagai tarian penyambutan dan berkaitan dengan seni...",
-      o: ["Pertunjukan Jawa Timur", "Pencak silat Melayu", "Tari Bali klasik", "Tari perang Papua"],
-      a: 0,
-      e: "Tari Remo dikenal sebagai tarian penyambutan dalam tradisi pertunjukan Jawa Timur."
-    },
-    {
-      q: "Jaranan merupakan kesenian pertunjukan yang menggunakan properti...",
-      o: ["Kuda tiruan", "Perahu kayu", "Topeng singa", "Boneka tangan"],
-      a: 0,
-      e: "Jaranan menggunakan properti berbentuk kuda tiruan."
-    },
-    {
-      q: "Salah satu ciri pertunjukan Ludruk adalah adanya...",
-      o: ["Dialog dan cerita kehidupan sehari-hari", "Gerakan tanpa dialog", "Pertunjukan boneka air", "Lagu opera Barat"],
-      a: 0,
-      e: "Ludruk dikenal melalui dialog, humor, dan cerita kehidupan masyarakat."
-    }
+    {q:"Upacara Kasada dilaksanakan oleh masyarakat...",o:["Osing","Tengger","Madura","Pandalungan"],a:1,e:"Upacara Kasada merupakan tradisi masyarakat Tengger."},
+    {q:"Bahasa Osing menjadi salah satu identitas bahasa masyarakat...",o:["Banyuwangi","Ponorogo","Pacitan","Madiun"],a:0,e:"Bahasa Osing dikenal sebagai bahasa masyarakat Osing di Banyuwangi."},
+    {q:"Properti utama yang terkenal dalam pertunjukan Reog Ponorogo adalah...",o:["Dadak merak","Perahu layar","Wayang golek","Angklung"],a:0,e:"Dadak merak merupakan properti yang paling dikenal dalam pertunjukan Reog Ponorogo."},
+    {q:"Topeng Malangan sering digunakan dalam pertunjukan...",o:["Wayang topeng","Karapan sapi","Ludruk modern","Jaranan Madura"],a:0,e:"Topeng Malangan merupakan bagian dari seni pertunjukan wayang topeng."},
+    {q:"Karapan Sapi merupakan tradisi berupa...",o:["Perlombaan sapi","Perlombaan kuda","Balap perahu","Lomba kerbau"],a:0,e:"Karapan Sapi merupakan tradisi perlombaan sapi yang dikenal di Madura."},
+    {q:"Masyarakat Tengger banyak tinggal di kawasan sekitar...",o:["Gunung Bromo","Gunung Merapi","Gunung Rinjani","Gunung Kerinci"],a:0,e:"Masyarakat Tengger dikenal tinggal di kawasan Pegunungan Bromo-Tengger."},
+    {q:"Jaranan merupakan kesenian pertunjukan yang menggunakan properti...",o:["Kuda tiruan","Perahu kayu","Topeng singa","Boneka tangan"],a:0,e:"Jaranan menggunakan properti berbentuk kuda tiruan."},
+    {q:"Tari Remo dikenal sebagai salah satu tarian...",o:["Penyambutan","Perang Papua","Klasik Bali","Melayu"],a:0,e:"Tari Remo dikenal sebagai tarian penyambutan dalam tradisi pertunjukan Jawa Timur."},
+    {q:"Tanean Lanjhang berasal dari tradisi permukiman masyarakat...",o:["Madura","Osing","Tengger","Betawi"],a:0,e:"Tanean Lanjhang merupakan pola permukiman tradisional masyarakat Madura."},
+    {q:"Ludruk dikenal sebagai pertunjukan yang mengangkat cerita...",o:["Kehidupan sehari-hari","Mitologi Yunani","Kehidupan kerajaan Eropa","Cerita luar angkasa"],a:0,e:"Ludruk dikenal dengan dialog, humor, dan cerita kehidupan masyarakat."}
   ]
 };
 
-let selectedLevel = "easy";
-let currentQuestions = [];
-let currentIndex = 0;
+let level = "easy";
+let questions = [];
+let index = 0;
 let score = 0;
 let answered = false;
 
-const levelScreen = document.getElementById("levelScreen");
-const quizScreen = document.getElementById("quizScreen");
-const resultScreen = document.getElementById("resultScreen");
+const menu = document.getElementById("menu");
+const game = document.getElementById("game");
+const result = document.getElementById("result");
 
 document.querySelectorAll(".level").forEach(button => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll(".level").forEach(item => item.classList.remove("active"));
-    button.classList.add("active");
-    selectedLevel = button.dataset.level;
+  button.addEventListener("click", function() {
+    document.querySelectorAll(".level").forEach(b => b.classList.remove("active"));
+    this.classList.add("active");
+    level = this.dataset.level;
   });
 });
 
-document.getElementById("startBtn").addEventListener("click", startQuiz);
+document.getElementById("start").addEventListener("click", startQuiz);
 
 function startQuiz() {
-  currentQuestions = [...questions[selectedLevel]].sort(() => Math.random() - 0.5);
-  currentIndex = 0;
+  questions = data[level].slice();
+  index = 0;
   score = 0;
   answered = false;
 
-  levelScreen.classList.add("hidden");
-  resultScreen.classList.add("hidden");
-  quizScreen.classList.remove("hidden");
+  menu.classList.add("hidden");
+  result.classList.add("hidden");
+  game.classList.remove("hidden");
 
-  document.getElementById("levelLabel").textContent = selectedLevel.toUpperCase() + " LEVEL";
+  document.getElementById("levelName").textContent = level.toUpperCase() + " LEVEL";
+
   showQuestion();
 }
 
 function showQuestion() {
   answered = false;
-  const question = currentQuestions[currentIndex];
 
-  document.getElementById("questionNumber").textContent =
-    "QUESTION " + (currentIndex + 1) + " / " + currentQuestions.length;
+  const item = questions[index];
 
-  document.getElementById("questionText").textContent = question.q;
-  document.getElementById("scoreLabel").textContent = "Skor: " + score;
+  document.getElementById("number").textContent =
+    "QUESTION " + (index + 1) + " / " + questions.length;
 
-  document.getElementById("progressFill").style.width =
-    (currentIndex / currentQuestions.length * 100) + "%";
+  document.getElementById("question").textContent = item.q;
+  document.getElementById("scoreText").textContent = "Skor: " + score;
 
-  document.getElementById("feedback").classList.add("hidden");
-  document.getElementById("nextBtn").classList.add("hidden");
+  document.getElementById("progressBar").style.width =
+    (index / questions.length * 100) + "%";
 
-  const options = document.getElementById("answerOptions");
+  const options = document.getElementById("options");
   options.innerHTML = "";
 
-  question.o.forEach((option, index) => {
+  document.getElementById("feedback").className = "feedback hidden";
+  document.getElementById("next").classList.add("hidden");
+
+  item.o.forEach((choice, i) => {
     const button = document.createElement("button");
-    button.className = "answer";
-    button.textContent = String.fromCharCode(65 + index) + ". " + option;
-    button.addEventListener("click", () => checkAnswer(index, button));
+    button.className = "option";
+    button.textContent = String.fromCharCode(65 + i) + ". " + choice;
+
+    button.addEventListener("click", function() {
+      checkAnswer(i, button);
+    });
+
     options.appendChild(button);
   });
 }
 
-function checkAnswer(index, clickedButton) {
+function checkAnswer(choice, clicked) {
   if (answered) return;
   answered = true;
 
-  const question = currentQuestions[currentIndex];
-  const buttons = document.querySelectorAll(".answer");
+  const item = questions[index];
+  const buttons = document.querySelectorAll(".option");
   const feedback = document.getElementById("feedback");
 
   buttons.forEach((button, i) => {
     button.disabled = true;
-    if (i === question.a) button.classList.add("correct");
+
+    if (i === item.a) {
+      button.classList.add("correct");
+    }
   });
 
-  if (index === question.a) {
+  if (choice === item.a) {
     score += 10;
-    feedback.textContent = "✓ Benar! " + question.e;
+    feedback.textContent = "✓ Jawaban benar! " + item.e;
     feedback.className = "feedback good";
   } else {
-    clickedButton.classList.add("wrong");
-    feedback.textContent = "Belum tepat. Jawaban yang benar adalah " +
-      question.o[question.a] + ". " + question.e;
+    clicked.classList.add("wrong");
+    feedback.textContent = "Belum tepat. Jawaban yang benar: " +
+      item.o[item.a] + ". " + item.e;
     feedback.className = "feedback bad";
   }
 
-  document.getElementById("scoreLabel").textContent = "Skor: " + score;
-  feedback.classList.remove("hidden");
+  document.getElementById("scoreText").textContent = "Skor: " + score;
 
-  document.getElementById("nextBtn").textContent =
-    currentIndex === currentQuestions.length - 1 ? "Lihat Hasil →" : "Soal Berikutnya →";
+  document.getElementById("next").textContent =
+    index === questions.length - 1 ? "Lihat Hasil →" : "Soal Berikutnya →";
 
-  document.getElementById("nextBtn").classList.remove("hidden");
+  document.getElementById("next").classList.remove("hidden");
 }
 
-document.getElementById("nextBtn").addEventListener("click", () => {
-  currentIndex++;
-  if (currentIndex < currentQuestions.length) {
+document.getElementById("next").addEventListener("click", function() {
+  index++;
+
+  if (index < questions.length) {
     showQuestion();
   } else {
     showResult();
@@ -690,21 +616,20 @@ document.getElementById("nextBtn").addEventListener("click", () => {
 });
 
 function showResult() {
-  quizScreen.classList.add("hidden");
-  resultScreen.classList.remove("hidden");
+  game.classList.add("hidden");
+  result.classList.remove("hidden");
 
-  document.getElementById("progressFill").style.width = "100%";
   document.getElementById("finalScore").textContent = score;
 
   let title = "Keep Learning!";
-  let message = "Jangan menyerah! Masih banyak budaya Jawa Timur yang bisa kamu pelajari.";
+  let message = "Terus belajar dan kenali lebih banyak budaya Jawa Timur.";
 
   if (score === 100) {
     title = "Perfect Score!";
-    message = "Luar biasa! Kamu berhasil menjawab semua pertanyaan dengan benar.";
+    message = "Luar biasa! Semua jawabanmu benar.";
   } else if (score >= 80) {
     title = "Excellent Work!";
-    message = "Hebat! Pengetahuan budayamu sudah sangat baik.";
+    message = "Hebat! Pengetahuan budayamu sangat baik.";
   } else if (score >= 60) {
     title = "Good Job!";
     message = "Bagus! Terus tingkatkan pengetahuanmu.";
@@ -713,38 +638,54 @@ function showResult() {
   document.getElementById("resultTitle").textContent = title;
   document.getElementById("resultMessage").textContent = message;
   document.getElementById("resultDetail").textContent =
-    "Kamu menjawab " + (score / 10) + " dari 10 soal dengan benar.";
+    "Jawaban benar: " + score / 10 + " dari 10 soal.";
 
   saveHistory();
 }
 
 function saveHistory() {
-  let history = JSON.parse(localStorage.getItem("eastjava_quiz_history") || "[]");
+  let history = [];
+
+  try {
+    history = JSON.parse(localStorage.getItem("eastjava_history") || "[]");
+    if (!Array.isArray(history)) history = [];
+  } catch (error) {
+    history = [];
+  }
 
   history.unshift({
-    level: selectedLevel,
+    level: level,
     score: score,
     date: new Date().toLocaleDateString("id-ID")
   });
 
   history = history.slice(0, 10);
-  localStorage.setItem("eastjava_quiz_history", JSON.stringify(history));
+  localStorage.setItem("eastjava_history", JSON.stringify(history));
+
+  renderHistory();
 }
 
 function renderHistory() {
-  const history = JSON.parse(localStorage.getItem("eastjava_quiz_history") || "[]");
-  const list = document.getElementById("historyList");
+  let history = [];
 
+  try {
+    history = JSON.parse(localStorage.getItem("eastjava_history") || "[]");
+    if (!Array.isArray(history)) history = [];
+  } catch (error) {
+    history = [];
+  }
+
+  const list = document.getElementById("historyList");
   list.innerHTML = "";
 
   if (history.length === 0) {
-    list.textContent = "Belum ada riwayat kuis. Ayo mulai tantangan pertamamu!";
+    list.textContent = "Belum ada riwayat kuis. Yuk mulai tantangan pertamamu!";
     return;
   }
 
   history.forEach(item => {
     const row = document.createElement("div");
-    row.className = "history-item";
+    row.className = "history-row";
 
     const left = document.createElement("span");
     left.textContent = item.level.toUpperCase() + " · " + item.date;
@@ -757,19 +698,17 @@ function renderHistory() {
   });
 }
 
-document.getElementById("retryBtn").addEventListener("click", startQuiz);
+document.getElementById("retry").addEventListener("click", startQuiz);
 
-document.getElementById("homeBtn").addEventListener("click", () => {
-  resultScreen.classList.add("hidden");
-  quizScreen.classList.add("hidden");
-  levelScreen.classList.remove("hidden");
+document.getElementById("back").addEventListener("click", function() {
+  result.classList.add("hidden");
+  menu.classList.remove("hidden");
   renderHistory();
 });
 
-document.getElementById("exitBtn").addEventListener("click", () => {
-  quizScreen.classList.add("hidden");
-  resultScreen.classList.add("hidden");
-  levelScreen.classList.remove("hidden");
+document.getElementById("exit").addEventListener("click", function() {
+  game.classList.add("hidden");
+  menu.classList.remove("hidden");
   renderHistory();
 });
 
