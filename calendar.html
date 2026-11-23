@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culture Calendar | EastJava</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#183F35;--ivory:#F4EBDD;--terra:#B96F4A;--gold:#D5B887;--ink:#292E29;--white:#fffdf8;--muted:#777267}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;background:var(--ivory);color:var(--ink);font-family:'DM Sans',sans-serif}
+header{background:var(--green);color:var(--ivory);position:sticky;top:0;z-index:10}
+.nav{max-width:1200px;margin:auto;padding:17px 6%;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{font:700 28px 'Playfair Display';color:var(--ivory);text-decoration:none}
+.logo span{color:var(--gold)}
+nav{display:flex;gap:22px;flex-wrap:wrap}
+nav a{color:var(--ivory);text-decoration:none;font-size:13px}
+nav a:hover{color:var(--gold)}
+.menu{display:none;background:none;border:1px solid var(--gold);color:white;padding:8px}
+.hero{padding:80px 8%;background:linear-gradient(120deg,#102e28,#285849);color:var(--ivory)}
+.eyebrow{font-size:11px;letter-spacing:3px;color:var(--terra);font-weight:700;text-transform:uppercase}
+.hero .eyebrow{color:var(--gold)}
+.hero h1{font:700 clamp(40px,7vw,68px) 'Playfair Display';margin:18px 0}
+.hero p{max-width:720px;line-height:1.9;color:#e2dfd4}
+main{max-width:1200px;margin:auto;padding:60px 6%}
+h2{font:600 clamp(29px,4vw,42px) 'Playfair Display';color:var(--green);margin:10px 0}
+.intro{max-width:800px;color:var(--muted);line-height:1.9}
+.toolbar{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin:30px 0}
+input,select{width:100%;padding:15px;border:1px solid #d8cdbb;background:var(--white);font:inherit;color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.event{background:var(--white);border:1px solid #e5dac8;border-left:4px solid var(--terra);padding:24px;border-radius:4px}
+.event .type{font-size:10px;letter-spacing:2px;color:var(--terra);font-weight:700;text-transform:uppercase}
+.event h3{font:600 23px 'Playfair Display';color:var(--green);margin:12px 0}
+.event p{font-size:13px;line-height:1.8;color:var(--muted)}
+.meta{font-size:12px;color:var(--green);font-weight:700;margin:10px 0}
+.event button{border:0;background:transparent;color:var(--terra);font-weight:700;padding:10px 0;cursor:pointer}
+.more{display:none;background:var(--ivory);padding:15px;margin-top:10px}
+.more.show{display:block}
+.notice{padding:18px;background:#e9dfcd;border-left:3px solid var(--gold);font-size:13px;line-height:1.8;color:#625f56;margin:25px 0}
+.empty{display:none;background:var(--white);padding:25px;text-align:center;color:var(--muted)}
+.source{margin-top:45px;background:var(--white);padding:25px;border:1px solid #e5dac8}
+.source a{color:var(--terra);display:block;margin:10px 0}
+footer{background:#102e28;color:var(--ivory);text-align:center;padding:35px 6%;margin-top:50px}
+footer p{font-size:13px;color:#d5cfc2}
+@media(max-width:850px){.menu{display:block}nav{display:none;position:absolute;top:65px;left:0;width:100%;background:var(--green);padding:20px;flex-direction:column}nav.open{display:flex}}
+@media(max-width:600px){.grid,.toolbar{grid-template-columns:1fr}.hero{padding:60px 7%}main{padding:40px 6%}}
+</style>
+</head>
+<body>
+<header>
+ <div class="nav">
+  <a class="logo" href="index.html">East<span>Java.</span></a>
+  <button class="menu" onclick="document.querySelector('nav').classList.toggle('open')">☰ Menu</button>
+  <nav>
+   <a href="index.html">Home</a>
+   <a href="explore.html">Explore</a>
+   <a href="quiz.html">Quiz</a>
+   <a href="index.html#comparison">Compare</a>
+   <a href="index.html#collection">My Collection</a>
+   <a href="calendar.html">Calendar</a>
+  </nav>
+ </div>
+</header>
+
+<section class="hero">
+ <div class="eyebrow">Mark Your Calendar</div>
+ <h1>Culture Calendar.</h1>
+ <p>Jelajahi berbagai festival, pertunjukan, dan tradisi yang menjadi bagian dari kehidupan budaya Jawa Timur. Temukan cerita di balik setiap perayaan dan daerah asalnya.</p>
+</section>
+
+<main>
+ <div class="eyebrow">01 / Cultural Events</div>
+ <h2>Agenda Budaya Jawa Timur</h2>
+ <p class="intro">Berikut adalah contoh agenda budaya dan festival yang tercatat dalam kalender kegiatan Jawa Timur tahun 2026. Setiap acara memiliki karakter dan keunikan tersendiri.</p>
+
+ <div class="notice">
+  <b>Catatan jadwal:</b> daftar festival bertanggal di bawah merupakan arsip agenda tahun 2026, bukan jadwal untuk tahun berikutnya. Jadwal penyelenggaraan dapat berubah sesuai keputusan panitia dan pemerintah daerah. Untuk kunjungan, periksa pengumuman resmi terbaru.
+ </div>
+
+ <div class="toolbar">
+  <input id="search" placeholder="⌕ Cari nama acara atau daerah..." oninput="renderEvents()">
+  <select id="filter" onchange="renderEvents()">
+   <option value="all">Semua kategori</option>
+   <option value="festival">Festival dan Karnaval</option>
+   <option value="seni">Seni dan Pertunjukan</option>
+   <option value="tradisi">Tradisi dan Budaya</option>
+   <option value="kuliner">Kuliner</option>
+  </select>
+ </div>
+
+ <div class="grid" id="events"></div>
+ <div class="empty" id="empty">Belum ada acara yang sesuai dengan pencarianmu.</div>
+
+ <section style="margin-top:75px">
+  <div class="eyebrow">02 / Living Traditions</div>
+  <h2>Tradisi yang Terus Hidup</h2>
+  <p class="intro">Selain festival tahunan, Jawa Timur memiliki tradisi yang pelaksanaannya mengikuti kalender adat, kondisi daerah, atau kesepakatan masyarakat setempat.</p>
+  <div class="grid" id="traditions"></div>
+ </section>
+
+ <section class="source">
+  <div class="eyebrow">03 / Further Reading</div>
+  <h2>Referensi dan Informasi</h2>
+  <p class="intro">Gunakan sumber berikut untuk memeriksa informasi dan jadwal terbaru sebelum menghadiri suatu kegiatan.</p>
+  <a href="https://mail.disbudpar.jatimprov.go.id/berita/event-jawa-timur-resmi-masuk-karisma-event-nusantara-2026" target="_blank" rel="noopener">Dinas Kebudayaan dan Pariwisata Jawa Timur — Event KEN 2026 ↗</a>
+  <a href="https://www.indonesia.travel/id/id/destination/java/east-java/upacara-petik-laut" target="_blank" rel="noopener">Indonesia Travel — Upacara Petik Laut ↗</a>
+  <a href="https://ponorogo.go.id/" target="_blank" rel="noopener">Pemerintah Kabupaten Ponorogo ↗</a>
+ </section>
+</main>
+
+<footer>
+ <div class="logo">East<span>Java.</span></div>
+ <p>The Living Heritage of East Java</p>
+ <p>Explore · Discover · Preserve</p>
+ <p>© 2026 EastJava</p>
+</footer>
+
+<script>
+const events=[
+{name:"Festival Rujak Uleg",place:"Surabaya",date:"9 Mei 2026",type:"kuliner",category:"Festival dan Kuliner",desc:"Festival yang mengangkat rujak uleg sebagai salah satu kuliner khas Surabaya. Kegiatan ini memperkenalkan kekayaan kuliner lokal melalui kegiatan bersama dan kreativitas masyarakat.",meaning:"Menunjukkan kebanggaan terhadap kuliner daerah serta semangat kebersamaan masyarakat.",month:5},
+{name:"Surabaya Vaganza",place:"Surabaya",date:"23 Mei 2026",type:"festival",category:"Festival dan Karnaval",desc:"Perayaan kota yang menghadirkan parade, dekorasi, dan kreativitas masyarakat. Acara ini menjadi salah satu ruang untuk menampilkan identitas serta potensi Kota Surabaya.",meaning:"Menggambarkan kreativitas, partisipasi masyarakat, dan kebanggaan terhadap kota.",month:5},
+{name:"Festival Nasional Reog Ponorogo",place:"Ponorogo",date:"6–15 Juni 2026",type:"seni",category:"Seni dan Pertunjukan",desc:"Festival yang menampilkan Reog Ponorogo melalui pertunjukan, kompetisi, dan kegiatan pelestarian seni tradisional. Reog dikenal melalui karakter Dadak Merak dan tokoh-tokoh pertunjukannya.",meaning:"Menjadi sarana pelestarian kesenian tradisional dan pengenalan budaya Ponorogo kepada generasi muda.",month:6},
+{name:"Segoro Topeng Kaliwungu",place:"Lumajang",date:"27–28 Juni 2026",type:"seni",category:"Seni dan Pertunjukan",desc:"Agenda budaya yang mengangkat seni topeng dan ekspresi budaya masyarakat setempat. Topeng menjadi media seni yang dapat menggambarkan karakter dan cerita.",meaning:"Mendorong pelestarian seni pertunjukan serta kreativitas masyarakat lokal.",month:6},
+{name:"Festival Ronthek",place:"Pacitan",date:"3–5 Juli 2026",type:"seni",category:"Seni dan Pertunjukan",desc:"Festival yang mengangkat kesenian musik tradisional Ronthek. Pertunjukan ini dikenal melalui permainan musik dan penampilan kelompok.",meaning:"Menjaga kesenian lokal sekaligus memperkuat kerja sama komunitas seni.",month:7},
+{name:"Banyuwangi Ethno Carnival",place:"Banyuwangi",date:"10–12 Juli 2026",type:"festival",category:"Festival dan Karnaval",desc:"Karnaval budaya yang mengangkat kekayaan tradisi dan identitas Banyuwangi melalui kostum kreatif, parade, dan pertunjukan.",meaning:"Menggabungkan pelestarian budaya dengan kreativitas generasi masa kini.",month:7},
+{name:"Jember Fashion Carnaval",place:"Jember",date:"24–26 Juli 2026",type:"festival",category:"Festival dan Karnaval",desc:"Pagelaran fesyen dan karnaval yang dikenal melalui kostum tematik, kreativitas desain, dan parade. Kegiatan ini menjadi salah satu acara unggulan Jember.",meaning:"Menunjukkan bahwa inspirasi budaya dapat dikembangkan menjadi karya kreatif dan pertunjukan modern.",month:7},
+{name:"Tong Tong Night Market",place:"Kota Malang",date:"30 Juli–2 Agustus 2026",type:"kuliner",category:"Festival dan Kuliner",desc:"Agenda yang menghadirkan suasana pasar malam dengan kegiatan kuliner, hiburan, dan aktivitas masyarakat.",meaning:"Menjadi ruang pertemuan masyarakat serta pengenalan produk dan kreativitas lokal.",month:7},
+{name:"Festival Jaranan Trenggalek Terbuka",place:"Trenggalek",date:"21–27 September 2026",type:"seni",category:"Seni dan Pertunjukan",desc:"Festival yang menampilkan kesenian jaranan sebagai bagian dari kekayaan seni pertunjukan masyarakat Trenggalek.",meaning:"Mendorong keberlanjutan seni tradisional melalui pertunjukan dan keterlibatan komunitas.",month:9},
+{name:"Festival Musik Tong-Tong",place:"Sumenep",date:"17–18 Oktober 2026",type:"seni",category:"Seni dan Pertunjukan",desc:"Festival musik yang mengangkat kekayaan bunyi dan kreativitas masyarakat Madura. Musik menjadi media ekspresi budaya dan kebersamaan.",meaning:"Menjaga identitas musik lokal dan memberi ruang bagi kreativitas masyarakat.",month:10},
+{name:"Gandrung Sewu",place:"Banyuwangi",date:"22–24 Oktober 2026",type:"seni",category:"Seni dan Pertunjukan",desc:"Pagelaran tari kolosal yang mengangkat Tari Gandrung sebagai salah satu identitas budaya Banyuwangi. Pertunjukan ini melibatkan banyak penari dan menjadi daya tarik budaya daerah.",meaning:"Menggambarkan rasa syukur, kebersamaan, dan kebanggaan terhadap seni tradisional Banyuwangi.",month:10}
+];
+
+const traditions=[
+{name:"Petik Laut",place:"Wilayah pesisir Jawa Timur",time:"Mengikuti kalender Jawa, umumnya sekitar bulan Suro",desc:"Tradisi masyarakat pesisir sebagai ungkapan rasa syukur atas hasil laut. Bentuk pelaksanaannya dapat berbeda di setiap daerah dan komunitas nelayan.",meaning:"Mengajarkan rasa syukur, kebersamaan, dan penghargaan terhadap lingkungan laut."},
+{name:"Yadnya Kasada",place:"Masyarakat Tengger, kawasan Bromo",time:"Mengikuti penanggalan adat masyarakat Tengger",desc:"Upacara adat masyarakat Tengger yang berkaitan dengan tradisi keagamaan dan ungkapan syukur. Pelaksanaannya menjadi bagian penting dari identitas masyarakat Tengger.",meaning:"Menunjukkan keberlanjutan tradisi, rasa syukur, dan hubungan masyarakat dengan warisan leluhur."},
+{name:"Seblang",place:"Banyuwangi",time:"Mengikuti ketentuan tradisi setempat",desc:"Tradisi ritual masyarakat Osing yang dikenal di wilayah Banyuwangi. Tata cara dan waktu pelaksanaannya berkaitan dengan komunitas pendukung tradisi.",meaning:"Menjadi bagian dari identitas budaya dan pewarisan tradisi masyarakat Osing."},
+{name:"Karapan Sapi",place:"Madura",time:"Jadwal perlombaan berbeda menurut wilayah dan penyelenggara",desc:"Tradisi perlombaan sapi yang dikenal luas sebagai bagian dari budaya masyarakat Madura. Kegiatan ini juga menjadi perayaan yang melibatkan masyarakat dan komunitas.",meaning:"Menggambarkan kebanggaan daerah, semangat, dan kebersamaan masyarakat."},
+{name:"Grebeg Suro",place:"Ponorogo",time:"Berkaitan dengan 1 Suro dalam kalender Jawa",desc:"Rangkaian kegiatan budaya di Ponorogo yang dikenal melalui pertunjukan Reog dan berbagai kegiatan masyarakat.",meaning:"Menjadi ruang pelestarian seni, penghormatan terhadap tradisi, dan penguatan identitas daerah."},
+{name:"Tumpeng Sewu",place:"Desa Kemiren, Banyuwangi",time:"Mengikuti kalender dan ketentuan tradisi setempat",desc:"Tradisi masyarakat Osing yang dikenal melalui penyajian tumpeng dan kegiatan bersama warga.",meaning:"Menggambarkan rasa syukur, kerukunan, dan semangat gotong royong."}
+];
+
+function makeCard(item,index,isTradition=false){
+ const card=document.createElement("article");
+ card.className="event";
+ const type=isTradition?"Tradisi Masyarakat":item.category;
+ const date=isTradition?item.time:item.date+" · Agenda 2026";
+ card.innerHTML=`
+ <div class="type">${type}</div>
+ <h3>${item.name}</h3>
+ <div class="meta">📍 ${item.place}</div>
+ <div class="meta">◷ ${date}</div>
+ <p>${item.desc}</p>
+ <button onclick="this.nextElementSibling.classList.toggle('show')">Baca makna dan detail ↓</button>
+ <div class="more">
+ <b>Makna budaya</b>
+ <p>${item.meaning}</p>
+ </div>`;
+ return card;
+}
+function renderEvents(){
+ const q=document.getElementById("search").value.toLowerCase();
+ const filter=document.getElementById("filter").value;
+ const result=events.filter(e=>{
+  const match=(e.name+" "+e.place+" "+e.desc).toLowerCase().includes(q);
+  return match&&(filter==="all"||e.type===filter);
+ });
+ const grid=document.getElementById("events");
+ grid.innerHTML="";
+ result.forEach((e,i)=>grid.appendChild(makeCard(e,i)));
+ document.getElementById("empty").style.display=result.length?"none":"block";
+}
+function renderTraditions(){
+ const grid=document.getElementById("traditions");
+ traditions.forEach((t,i)=>grid.appendChild(makeCard(t,i,true)));
+}
+renderEvents();
+renderTraditions();
+</script>
+</body>
+</html>
